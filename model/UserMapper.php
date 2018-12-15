@@ -1,0 +1,36 @@
+<?php
+
+require_once 'User.php';
+require_once __DIR__.'/../Database.php';
+
+class UserMapper
+{
+    private $database;
+
+    public function __construct()
+    {
+        $this->database = new Database();
+    }
+
+    public function getUser(
+        string $email
+    ):User {
+        try {
+            $statement_to_retrieve_user =
+                'SELECT * FROM Users 
+                  RIGHT JOIN User_details 
+                  ON Users.user_detail = User_details.id_user_detail 
+                  WHERE email = :email';
+
+            $stmt = $this->database->connect()->prepare($statement_to_retrieve_user);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            return new User($user['name'], $user['surname'], $user['email'], $user['login'], $user['password']);
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+}
