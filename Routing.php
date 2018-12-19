@@ -21,6 +21,10 @@ class Routing
                 'controller' => 'DefaultController',
                 'action' => 'logout'
             ],
+            'register' =>[
+                'controller' => 'DefaultController',
+                'action' => 'register'
+            ]
         ];
     }
 

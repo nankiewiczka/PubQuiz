@@ -33,7 +33,8 @@
                         <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password" type="password" required/>
                     </div>
                 </div>
-                <input type="submit" value="Sign in" class="btn btn-primary btn-lg float-right loginButton" />
+                <input type="submit" value="Sign in" class="btn btn-primary btn-lg float-right submitButton" />
+                <p>Don't have an account? <a href=<?php echo '?page=register'; ?>>Sign up now</a>.</p>
             </form>
         </div>
     </div>

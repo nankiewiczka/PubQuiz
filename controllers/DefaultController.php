@@ -42,7 +42,7 @@ class DefaultController extends AppController
                 $_SESSION["role"] = $user->getRole();
 
                 $url = "http://$_SERVER[HTTP_HOST]/";
-                header("Location: {$url}?page=index");
+                header("Location: {$url}?page=login");
                 exit();
             }
         }
@@ -57,4 +57,15 @@ class DefaultController extends AppController
 
         $this->render('index', ['text' => 'You have been successfully logged out!']);
     }
+
+    public function register()
+    {
+        if ($this->isPost()) {
+
+            return $this->render('login');
+        }
+
+        return $this->render('register');
+    }
+
 }
