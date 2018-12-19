@@ -58,14 +58,4 @@ class DefaultController extends AppController
         $this->render('index', ['text' => 'You have been successfully logged out!']);
     }
 
-    public function register()
-    {
-        if ($this->isPost()) {
-
-            return $this->render('login');
-        }
-
-        return $this->render('register');
-    }
-
 }

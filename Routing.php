@@ -1,6 +1,7 @@
 <?php
 
 require_once('controllers/DefaultController.php');
+require_once('controllers/RegisterController.php');
 
 class Routing
 {
@@ -22,7 +23,7 @@ class Routing
                 'action' => 'logout'
             ],
             'register' =>[
-                'controller' => 'DefaultController',
+                'controller' => 'RegisterController',
                 'action' => 'register'
             ]
         ];
