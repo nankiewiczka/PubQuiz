@@ -10,35 +10,35 @@
 <p>
     <?= $text ?>
 </p>
-    <form>
+    <form action="?page=register" method="POST">
         <div class="form-group row">
             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" placeholder="Name">
+                <input type="text" class="form-control" id="inputName" name="name" placeholder="Name">
             </div>
         </div>
         <div class="form-group row">
             <label for="inputSurname" class="col-sm-2 col-form-label">Surname</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputSurname" placeholder="Surname">
+                <input type="text" class="form-control" id="inputSurname" name="surname" placeholder="Surname">
             </div>
         </div>
         <div class="form-group row">
             <label for="inputLogin" class="col-sm-2 col-form-label">Login</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputLogin" placeholder="Login">
+                <input type="text" class="form-control" id="inputLogin" name="login" placeholder="Login">
             </div>
         </div>
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword" placeholder="">
+                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="">
             </div>
         </div>
         <div class="form-group row">
             <label for="inputRepeatedPassword" class="col-sm-2 col-form-label">Repeat password</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputRepeatedPassword" placeholder="">
+                <input type="password" class="form-control" id="inputRepeatedPassword" name="repeatedPassowrd" placeholder="">
             </div>
         </div>
         <div class="form-group row">

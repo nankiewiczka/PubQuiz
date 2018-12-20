@@ -13,17 +13,17 @@ class UserMapper
     }
 
     public function getUser(
-        string $email
+        string $login
     ):User {
         try {
             $statement_to_retrieve_user =
                 'SELECT * FROM Users 
                   RIGHT JOIN User_details 
                   ON Users.user_detail = User_details.id_user_detail 
-                  WHERE email = :email';
+                  WHERE login = :login';
 
             $stmt = $this->database->connect()->prepare($statement_to_retrieve_user);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':login', $login, PDO::PARAM_STR);
             $stmt->execute();
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);

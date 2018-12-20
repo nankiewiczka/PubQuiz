@@ -19,10 +19,38 @@ class RegisterController extends AppController
         if ($this->isPost()) {
 //            TODO odczytywanie,walidacji i zapis do bazy, po poprawnym przekierowanie na stronę z liniem do logowania
 
-            return $this->render('login');
+            $name = $_POST['name'];
+            $surname = $_POST['name'];
+            $login = $_POST['name'];
+            $password = $_POST['name'];
+            $repeatedPassword = $_POST['name'];
+
+
+            return $this->render('index', ['text' => $name]);
+
         }
 
         return $this->render('register');
     }
 
 }
+
+//if ($this->isPost()) {
+//
+//    $user = $mapper->getUser($_POST['email']);
+//
+//    if(!$user) {
+//        return $this->render('login', ['message' => ['Email not recognized']]);
+//    }
+//
+//    if ($user->getPassword() !== $_POST['password']) {
+//        return $this->render('login', ['message' => ['Wrong password']]);
+//    } else {
+//        $_SESSION["id"] = $user->getEmail();
+//        $_SESSION["role"] = $user->getRole();
+//
+//        $url = "http://$_SERVER[HTTP_HOST]/";
+//        header("Location: {$url}?page=login");
+//        exit();
+//    }
+//}

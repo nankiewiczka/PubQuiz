@@ -18,11 +18,11 @@
 
             <form action="?page=login" method="POST">
                 <div class="form-group row">
-                    <label for="inputEmail" class="col-sm-1 col-form-label">
+                    <label for="inputLogin" class="col-sm-1 col-form-label">
                         <i class="material-icons md-48">email</i>
                     </label>
                     <div class="col-sm-11">
-                        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="email" required/>
+                        <input type="text" class="form-control" id="inputLogin" name="login" placeholder="Login" required/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -30,7 +30,7 @@
                         <i class="material-icons md-48">person</i>
                     </label>
                     <div class="col-sm-11">
-                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password" type="password" required/>
+                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password" required/>
                     </div>
                 </div>
                 <input type="submit" value="Sign in" class="btn btn-primary btn-lg float-right submitButton" />

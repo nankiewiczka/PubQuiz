@@ -29,7 +29,7 @@ class DefaultController extends AppController
 
         if ($this->isPost()) {
 
-            $user = $mapper->getUser($_POST['email']);
+            $user = $mapper->getUser($_POST['login']);
 
             if(!$user) {
                 return $this->render('login', ['message' => ['Email not recognized']]);
@@ -38,11 +38,11 @@ class DefaultController extends AppController
             if ($user->getPassword() !== $_POST['password']) {
                 return $this->render('login', ['message' => ['Wrong password']]);
             } else {
-                $_SESSION["id"] = $user->getEmail();
+                $_SESSION["id"] = $user->getLogin();
                 $_SESSION["role"] = $user->getRole();
 
                 $url = "http://$_SERVER[HTTP_HOST]/";
-                header("Location: {$url}?page=login");
+                header("Location: {$url}?page=index");
                 exit();
             }
         }
