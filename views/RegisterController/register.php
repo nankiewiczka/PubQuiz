@@ -10,53 +10,54 @@
 <p>
     <?= $text ?>
 </p>
-
-<form>
-    <div class="form-group row">
-        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
-        <div class="col-sm-10">
-            <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="colFormLabel" class="col-sm-2 col-form-label">Surname</label>
-        <div class="col-sm-10">
-            <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Login</label>
-        <div class="col-sm-10">
-            <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Password</label>
-        <div class="col-sm-10">
-            <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Repeat password</label>
-        <div class="col-sm-10">
-            <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-            <label class="form-check-label" for="invalidCheck">
-                Agree to terms and conditions
-            </label>
-            <div class="invalid-feedback">
-                You must agree before submitting.
+    <form>
+        <div class="form-group row">
+            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" placeholder="Name">
             </div>
         </div>
-    </div>
-    <input type="submit" value="Create account" class="btn btn-primary btn-lg float-right submitButton" />
-
-</form>
-
+        <div class="form-group row">
+            <label for="inputSurname" class="col-sm-2 col-form-label">Surname</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputSurname" placeholder="Surname">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputLogin" class="col-sm-2 col-form-label">Login</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputLogin" placeholder="Login">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword" placeholder="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputRepeatedPassword" class="col-sm-2 col-form-label">Repeat password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputRepeatedPassword" placeholder="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">
+                    You must agree before submitting.
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary submitButton">Sign in</button>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>
