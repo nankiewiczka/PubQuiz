@@ -30,47 +30,11 @@ class RegisterController extends AppController
             $repeatedPassword = $_POST['repeatedPassword'];
 
             $user = $mapper->getUser($login);
-            if(!$user)
-            {
-                if($password === $repeatedPassword) {
-                    return $this->render('index', ['text' => 'Account was successfully created.']);
-                }
-                else
-                {
-                    return $this->render('register', ['text' => 'Entered passwords are not the same.']);
-                }
-                // dodajemy do bazy
-            }
-            else
-            {
-                return $this->render('register', ['text' => 'There is already user with this login.']);
-
-            }
-
-
+            return $this->render('index');
         }
-
+        else
         return $this->render('register');
     }
 
 }
 
-//if ($this->isPost()) {
-//
-//    $user = $mapper->getUser($_POST['email']);
-//
-//    if(!$user) {
-//        return $this->render('login', ['message' => ['Email not recognized']]);
-//    }
-//
-//    if ($user->getPassword() !== $_POST['password']) {
-//        return $this->render('login', ['message' => ['Wrong password']]);
-//    } else {
-//        $_SESSION["id"] = $user->getEmail();
-//        $_SESSION["role"] = $user->getRole();
-//
-//        $url = "http://$_SERVER[HTTP_HOST]/";
-//        header("Location: {$url}?page=login");
-//        exit();
-//    }
-//}
