@@ -30,7 +30,7 @@
                         <i class="material-icons md-48">person</i>
                     </label>
                     <div class="col-sm-11">
-                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password" required/>
+                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required/>
                     </div>
                 </div>
                 <input type="submit" value="Sign in" class="btn btn-primary btn-lg float-right submitButton" />

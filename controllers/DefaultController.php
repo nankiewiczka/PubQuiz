@@ -32,7 +32,7 @@ class DefaultController extends AppController
             $user = $mapper->getUser($_POST['login']);
 
             if(!$user) {
-                return $this->render('login', ['message' => ['Email not recognized']]);
+                return $this->render('login', ['message' => ['Login not recognized']]);
             }
 
             if ($user->getPassword() !== $_POST['password']) {

@@ -14,7 +14,7 @@ class UserMapper
 
     public function getUser(
         string $login
-    ):User {
+    ) {
         try {
             $statement_to_retrieve_user =
                 'SELECT * FROM Users 
@@ -27,7 +27,10 @@ class UserMapper
             $stmt->execute();
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            return new User($user['name'], $user['surname'], $user['email'], $user['login'], $user['password']);
+            if($user)
+                return new User($user['name'], $user['surname'], $user['email'], $user['login'], $user['password']);
+            else
+                return null;
         }
         catch(PDOException $e) {
             return 'Error: ' . $e->getMessage();

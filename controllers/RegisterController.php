@@ -16,17 +16,37 @@ class RegisterController extends AppController
 
     public function register()
     {
+        $mapper = new UserMapper();
+
+        $user = null;
+
         if ($this->isPost()) {
 //            TODO odczytywanie,walidacji i zapis do bazy, po poprawnym przekierowanie na stronę z liniem do logowania
-
+// jak zachować formularz???
             $name = $_POST['name'];
-            $surname = $_POST['name'];
-            $login = $_POST['name'];
-            $password = $_POST['name'];
-            $repeatedPassword = $_POST['name'];
+            $surname = $_POST['surname'];
+            $login = $_POST['login'];
+            $password = $_POST['password'];
+            $repeatedPassword = $_POST['repeatedPassword'];
 
+            $user = $mapper->getUser($login);
+            if(!$user)
+            {
+                if($password === $repeatedPassword) {
+                    return $this->render('index', ['text' => 'Account was successfully created.']);
+                }
+                else
+                {
+                    return $this->render('register', ['text' => 'Entered passwords are not the same.']);
+                }
+                // dodajemy do bazy
+            }
+            else
+            {
+                return $this->render('register', ['text' => 'There is already user with this login.']);
 
-            return $this->render('index', ['text' => $name]);
+            }
+
 
         }
 
