@@ -29,7 +29,8 @@ class RegisterController extends AppController
             $repeatedPassword = $_POST['repeatedPassword'];
 
            // $user = $mapper->getUser($login);
-            $this->render('index', ['text' => $password]);
+            $this->render('index', ['text' =>
+                '<p>Account created successfully</p><a href=<?php echo \'?page=login\'; ?>Sign in now</a>.</p>']);
         }
         else
         return $this->render('register');
