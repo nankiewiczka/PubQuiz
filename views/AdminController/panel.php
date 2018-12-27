@@ -2,6 +2,7 @@
 <html>
 
 <?php include(dirname(__DIR__).'/head.html'); ?>
+<script src="../../public/js/panelScripts.js"></script>
 
 <body>
 
@@ -15,8 +16,26 @@
 </div>
 
 <div>
-    <button type="button" class="btn btn-info">Add quiz</button>
+    <button type="button" class="btn btn-info" id="addQuizButton">Add quiz</button>
 
+</div>
+
+<div id="addQuizDiv">
+<div class="form-group row">
+    <label for="inputName" class="col-sm-1 col-form-label">
+    </label>
+    <div class="col-sm-11">
+        <input type="text" class="form-control" id="inputQuizName" name="quizName" placeholder=" " required/>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="inputDate" class="col-sm-1 col-form-label">
+    </label>
+    <div class="col-sm-11">
+        <input type="text" name="quizDate" class="form-control" id="inputQuizDate" placeholder=" " required/>
+    </div>
+</div>
+<input type="submit" value="Sign in" class="btn btn-primary btn-lg float-right submitButton" />
 </div>
 
 <div>

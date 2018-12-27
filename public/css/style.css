@@ -8,4 +8,6 @@ body {
     border-color: #1E4856;
 }
 
-
+#addQuizDiv {
+    display : none;
+}
