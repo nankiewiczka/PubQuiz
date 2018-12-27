@@ -21,7 +21,6 @@ class RegisterController extends AppController
         $user = null;
 
         if ($this->isPost()) {
-//TODO dodanie do bazy, walidacja jest ok
             $name = $_POST['name'];
             $surname = $_POST['surname'];
             $email = $_POST['email'];
@@ -29,11 +28,10 @@ class RegisterController extends AppController
             $password = $_POST['password'];
 
             $user = new User($name, $surname, $email, $login, $password);
-            $bla = $mapper->addUser($user);
+            $mapper->addUser($user);
 
-//            $this->render('index', ['text' =>
-/*                '<p>Account created successfully</p><a href=<?php echo \'?page=login\'; ?>Sign in now</a>.</p>']);*/
-            $this->render('index', ['text' => $bla]);
+            $this->render('index', ['text' =>
+                '<p>Account created successfully</p><a href=<?php echo \'?page=login\'; ?>Sign in now</a>.</p>']);
         }
         else
         return $this->render('register');

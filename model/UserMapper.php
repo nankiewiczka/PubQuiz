@@ -63,7 +63,6 @@ class UserMapper
             $stmt->bindParam(':name', $user->getName(), PDO::PARAM_STR);
             $stmt->bindParam(':surname', $user->getSurname(), PDO::PARAM_STR);
             $stmt->execute();
-            return $user_detail_id;
         }
         catch(PDOException $e) {
             return 'Error: ' . $e->getMessage();
