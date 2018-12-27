@@ -33,4 +33,25 @@ class QuizMapper
             return 'Error: ' . $e->getMessage();
         }
     }
+
+    public function isQuizNameAvailable(string $name) {
+        try {
+            $statement =
+                'SELECT * FROM Quizes WHERE name=:name';
+
+            $stmt = $this->database->connect()->prepare($statement);
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $number_of_rows = $stmt->rowCount();
+
+            if($number_of_rows != 0)
+                echo '1';
+            else
+                echo '0';
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
 }

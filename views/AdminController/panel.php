@@ -33,7 +33,7 @@
         <input type="text" name="quizDate" class="form-control" id="inputQuizDate" placeholder=" " required/>
     </div>
 </div>
-<input type="submit" value="Sign in" class="btn btn-primary btn-lg float-left submitButton" />
+<input type="submit" onclick="createQuiz()" value="Sign in" class="btn btn-primary btn-lg float-left submitButton" />
 </div>
 
 <div></div>

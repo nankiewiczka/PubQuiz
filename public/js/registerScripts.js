@@ -40,3 +40,6 @@ function validateRegisterForm() {
     });
     return valid;
 }
+
+
+// TODO poprawić na jquery
