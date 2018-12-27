@@ -22,22 +22,23 @@
 
 <div id="addQuizDiv">
 <div class="form-group row">
-    <label for="inputName" class="col-sm-1 col-form-label">
-    </label>
-    <div class="col-sm-11">
+    <label for="inputName" class="col-sm-1 col-form-label">Quiz name</label>
+    <div class="col-sm-6">
         <input type="text" class="form-control" id="inputQuizName" name="quizName" placeholder=" " required/>
     </div>
 </div>
 <div class="form-group row">
-    <label for="inputDate" class="col-sm-1 col-form-label">
-    </label>
-    <div class="col-sm-11">
+    <label for="inputDate" class="col-sm-1 col-form-label">Date</label>
+    <div class="col-sm-6">
         <input type="text" name="quizDate" class="form-control" id="inputQuizDate" placeholder=" " required/>
     </div>
 </div>
-<input type="submit" value="Sign in" class="btn btn-primary btn-lg float-right submitButton" />
+<input type="submit" value="Sign in" class="btn btn-primary btn-lg float-left submitButton" />
 </div>
 
+<div></div>
+<br>
+<br>
 <div>
     <p>Quizes</p>
         <?php
