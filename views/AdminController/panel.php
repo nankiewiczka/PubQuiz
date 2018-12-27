@@ -19,5 +19,26 @@
 
 </div>
 
+<div>
+    <p>Quizes</p>
+        <?php
+        require_once(dirname(__DIR__).'/../model/'.'/QuizMapper.php');
+        require_once(dirname(__DIR__).'/../model/'.'/Quiz.php');
+        $mapper = new QuizMapper();
+        $array = $mapper->getAllQuizes();
+        foreach ($array as  $value) {
+            $name = $value->getName();
+            $date = $value->getDate();
+            $enable = $value->getEnable();
+            echo
+            " <div>
+            <label>$name</label>
+            <label>$date</label>
+            <button type=\"button\" class=\"btn btn-info\">START</button>
+            </div>";
+        }
+        ?>
+</div>
+
 </body>
 </html>
