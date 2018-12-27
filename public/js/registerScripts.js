@@ -5,22 +5,6 @@ function validateRegisterForm() {
     let valid = true;
     let errorColor = "#121141";
 
-    $.post( "check.php", { login: loginElement.value }, function (data){
-        console.log(data);
-        if(data != '0') {
-            loginElement.style.backgroundColor = errorColor;
-            let p1 = "<p id=\"loginMessage\">Login is already taken.</p>";
-            if(!document.getElementById("loginMessage"))
-                document.getElementById("messages").insertAdjacentHTML('beforeend', p1);
-            document.getElementById("inputLogin").value = "";
-            valid = false;
-        }
-        else {
-            if(document.getElementById("loginMessage"))
-                document.getElementById("messages").removeChild(document.getElementById("loginMessage"));
-        }
-    });
-
     if (passwordElement.value !== passwordRepeatedElement.value) {
         passwordElement.style.backgroundColor = errorColor;
         passwordRepeatedElement.style.backgroundColor = errorColor;
@@ -37,6 +21,29 @@ function validateRegisterForm() {
         if(document.getElementById("passwordMessage"))
             document.getElementById("messages").removeChild(document.getElementById("passwordMessage"));
     }
+
+    $.ajax({
+        type: "POST",
+        url: "check.php",
+        async: false,
+        data: {login : loginElement.value},
+        success: function(data) { if(data != '0') {
+                    loginElement.style.backgroundColor = errorColor;
+                    let p1 = "<p id=\"loginMessage\">Login is already taken.</p>";
+                    if(!document.getElementById("loginMessage"))
+                        document.getElementById("messages").insertAdjacentHTML('beforeend', p1);
+                    document.getElementById("inputLogin").value = "";
+                    valid = false;
+                }
+                else {
+                    if(document.getElementById("loginMessage"))
+                        document.getElementById("messages").removeChild(document.getElementById("loginMessage"));
+                }}
+    });
+
+
+
+
 
     return valid;
 }
