@@ -24,13 +24,16 @@ class RegisterController extends AppController
 //TODO dodanie do bazy, walidacja jest ok
             $name = $_POST['name'];
             $surname = $_POST['surname'];
+            $email = $_POST['email'];
             $login = $_POST['login'];
             $password = $_POST['password'];
-            $repeatedPassword = $_POST['repeatedPassword'];
 
-           // $user = $mapper->getUser($login);
-            $this->render('index', ['text' =>
-                '<p>Account created successfully</p><a href=<?php echo \'?page=login\'; ?>Sign in now</a>.</p>']);
+            $user = new User($name, $surname, $email, $login, $password);
+            $bla = $mapper->addUser($user);
+
+//            $this->render('index', ['text' =>
+/*                '<p>Account created successfully</p><a href=<?php echo \'?page=login\'; ?>Sign in now</a>.</p>']);*/
+            $this->render('index', ['text' => $bla]);
         }
         else
         return $this->render('register');
