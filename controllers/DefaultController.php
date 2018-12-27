@@ -37,12 +37,13 @@ class DefaultController extends AppController
 
             if ($user->getPassword() !== $_POST['password']) {
                 return $this->render('login', ['message' => ['Wrong password']]);
-            } else {
+            }
+            else {
                 $_SESSION["id"] = $user->getLogin();
                 $_SESSION["role"] = $user->getRole();
 
                 $url = "http://$_SERVER[HTTP_HOST]/";
-                header("Location: {$url}?page=index");
+                header("Location: {$url}?page=panel");
                 exit();
             }
         }
