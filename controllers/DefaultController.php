@@ -26,14 +26,14 @@ class DefaultController extends AppController
         $mapper = new UserMapper();
 
         $user = null;
-
-        $_SESSION["team_role"] = "user";
+        $_SESSION["role"] = "user";
+        $_SESSION["team_role"] = "member";
         $_SESSION["team_name"] = "blabla";
         if ($this->isPost()) {
 
-                $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
-                header("Location: {$url}?page=account");
-                exit();
+//                $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
+//                header("Location: {$url}?page=account");
+//                exit();
 
 //            $user = $mapper->getUser($_POST['login']);
 //
@@ -52,6 +52,17 @@ class DefaultController extends AppController
 //                header("Location: {$url}?page=panel");
 //                exit();
 //            }
+
+            if($_SESSION["role"] =="admin") {
+                $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
+                header("Location: {$url}?page=panel");
+                exit();
+            }
+            else {
+                $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
+                header("Location: {$url}?page=account");
+                exit();
+            }
         }
 
         return $this->render('login');
