@@ -60,7 +60,7 @@ class DefaultController extends AppController
             }
             else {
                 $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
-                header("Location: {$url}?page=account");
+                header("Location: {$url}?page=game");
                 exit();
             }
         }
