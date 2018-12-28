@@ -5,14 +5,13 @@ class Quiz {
     private $id;
     private $name;
     private $date;
-    private $enable;
+    private $status;
 
-    public function __construct($id, $name, $date, $enable)
+    public function __construct($name, $date, $status)
     {
-        $this->id = $id;
         $this->name = $name;
         $this->date = $date;
-        $this->enable = $enable;
+        $this->status = $status;
     }
 
     public function getId()
@@ -20,10 +19,6 @@ class Quiz {
         return $this->id;
     }
 
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
 
     public function getName()
     {
@@ -46,13 +41,13 @@ class Quiz {
         $this->date = $date;
     }
 
-    public function getEnable()
+    public function getStatus()
     {
-        return $this->enable;
+        return $this->status;
     }
 
-    public function setEnable($enable): void
+    public function setStatus($status): void
     {
-        $this->enable = $enable;
+        $this->status = $status;
     }
 }

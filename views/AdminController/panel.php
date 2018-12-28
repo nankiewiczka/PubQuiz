@@ -49,7 +49,6 @@
         foreach ($array as  $value) {
             $name = $value->getName();
             $date = $value->getDate();
-            $enable = $value->getEnable();
             echo
             " <div>
             <label>$name</label>

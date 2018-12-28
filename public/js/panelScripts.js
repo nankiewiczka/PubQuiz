@@ -8,6 +8,7 @@ $(document).ready(
 
 function createQuiz() {
     let name = $('#inputQuizName').val();
+    let date = $('#inputQuizDate').val();
     let valid = true;
     console.log(name);
     $.ajax({
@@ -24,14 +25,16 @@ function createQuiz() {
     });
 
     console.log(valid);
-    // if(aval) {
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "checkQuizAvailability.php",
-    //         async: false,
-    //         data: {name : name}
-    //
-    //     });
-    // }
+    if(valid) {
+        $.ajax({
+            type: "POST",
+            url: "add_quiz.php",
+            data: {
+                name : name,
+                date:date
+            }
+
+        });
+    }
 
 }

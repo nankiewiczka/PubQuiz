@@ -54,4 +54,21 @@ class QuizMapper
             return 'Error: ' . $e->getMessage();
         }
     }
+
+    public function addQuiz(Quiz $quiz) {
+        try {
+            $statement_to_insert_user_details =
+                'INSERT INTO Quizes(name, date, status) VALUES (:name, :date, :status)';
+
+            $stmt = $this->database->connect()->prepare($statement_to_insert_user_details);
+            $stmt->bindParam(':name', $quiz->getName(),  PDO::PARAM_STR);
+            $stmt->bindParam(':date', $quiz->getDate(),  PDO::PARAM_STR);
+            $stmt->bindParam(':status', $quiz->getStatus(),  PDO::PARAM_STR);
+            $stmt->execute();
+
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
 }

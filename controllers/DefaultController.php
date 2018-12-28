@@ -26,37 +26,39 @@ class DefaultController extends AppController
         $mapper = new UserMapper();
 
         $user = null;
-        $_SESSION["role"] = "user";
-        $_SESSION["team_role"] = "member";
-        $_SESSION["team_name"] = "blabla";
+//        $_SESSION["role"] = "user";
+//        $_SESSION["team_role"] = "member";
+//        $_SESSION["team_name"] = "blabla";
         if ($this->isPost()) {
 
 
-            $user = $mapper->getUser($_POST['login']);
-
-            if(!$user) {
-                return $this->render('login', ['message' => ['Login not recognized']]);
-            }
-
-            if ($user->getPassword() !== $_POST['password']) {
-                return $this->render('login', ['message' => ['Wrong password']]);
-            }
-            else {
-                $_SESSION["id"] = $user->getLogin();
-                $_SESSION["role"] = $user->getRole();
-
-                if($_SESSION["role"] =="admin") {
-                    $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
-                    header("Location: {$url}?page=panel");
-                    exit();
-                }
-                else {
-                    $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
-                    header("Location: {$url}?page=account");
-                    exit();
-                }
-            }
-
+//            $user = $mapper->getUser($_POST['login']);
+//
+//            if(!$user) {
+//                return $this->render('login', ['message' => ['Login not recognized']]);
+//            }
+//
+//            if ($user->getPassword() !== $_POST['password']) {
+//                return $this->render('login', ['message' => ['Wrong password']]);
+//            }
+//            else {
+//                $_SESSION["id"] = $user->getLogin();
+//                $_SESSION["role"] = $user->getRole();
+//
+//                if($_SESSION["role"] =="admin") {
+//                    $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
+//                    header("Location: {$url}?page=panel");
+//                    exit();
+//                }
+//                else {
+//                    $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
+//                    header("Location: {$url}?page=account");
+//                    exit();
+//                }
+//            }
+            $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
+            header("Location: {$url}?page=panel");
+            exit();
 
         }
 
