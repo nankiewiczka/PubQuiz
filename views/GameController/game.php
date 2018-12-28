@@ -5,12 +5,12 @@
 
 <body>
 
-<h1>TU BĘDZIE GRA</h1>
+<h1>QUIZ</h1>
+
 <p>
     <?= $text ?>
 </p>
-
-
+<?php include(dirname(__DIR__).'/game.php'); ?>
 
 </body>
 </html>

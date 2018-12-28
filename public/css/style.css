@@ -15,3 +15,21 @@ body {
 #addTeamDiv {
     display : none;
 }
+
+.gameDiv {
+    background-color: #dd0063;
+    margin-top: 10px;
+}
+
+.question {
+    background-color: #00dd00;
+
+}
+
+.answerButton {
+    background-color: darkgoldenrod;
+
+}
+
+
+
