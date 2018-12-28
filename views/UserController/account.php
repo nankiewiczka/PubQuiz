@@ -8,6 +8,7 @@
 <body>
 
 <h1>STRONA UŻYTKOWNIKA</h1>
+<p><a href="?page=history">See results</a></p>
 
 <?php
 $team_name = $_SESSION["team_name"];
@@ -41,21 +42,24 @@ else {
             <button type=\"button\" class=\"btn btn-info\">DELETE MEMBER</button>
             </div>";
         }
-        $array = [1,2,3,4,5];
-        foreach ($array as  $value) {
-            $name = "quiz".$value;
-            echo
-            "<div>
-            <label>$name</label>
-            <button type=\"button\" class=\"btn btn-info\">PLAY</button>
-            </div>";
-        }
-
     }
     else {
         echo
         "<div>Twoja druzyna: $team_name</div>";
     }
+
+    echo
+    "<div>Dostepne quizy:</div>";
+    $array = [1,2,3,4,5];
+    foreach ($array as  $value) {
+        $name = "quiz".$value;
+        echo
+        "<div>
+            <label>$name</label>
+            <button type=\"button\" class=\"btn btn-info\">PLAY</button>
+            </div>";
+    }
+
 }
 
 

@@ -35,6 +35,10 @@ class Routing
             'account' =>[
                 'controller' => 'UserController',
                 'action' => 'start'
+            ],
+            'history' =>[
+                'controller' => 'UserController',
+                'action' => 'showHistory'
             ]
         ];
     }

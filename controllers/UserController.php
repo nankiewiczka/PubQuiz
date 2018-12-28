@@ -24,6 +24,11 @@ class UserController extends AppController
 
     }
 
+    public function showHistory()
+    {
+        return $this->render('history');
+    }
+
 
 
 }
