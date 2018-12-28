@@ -8,15 +8,16 @@ class User
     private $email;
     private $login;
     private $password;
-    private $role = "ROLE_USER";
+    private $role;
 
-    public function __construct($name, $surname, $email, $login, $password)
+    public function __construct($name, $surname, $email, $login, $password, $role)
     {
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
         $this->login = $login;
         $this->password = $password;
+        $this->role = $role;
     }
 
     public function getName()
@@ -80,8 +81,4 @@ class User
         return $this->role;
     }
 
-    public function setRole(string $role): void
-    {
-        $this->role = $role;
-    }
 }

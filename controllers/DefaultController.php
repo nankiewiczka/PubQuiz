@@ -31,38 +31,33 @@ class DefaultController extends AppController
         $_SESSION["team_name"] = "blabla";
         if ($this->isPost()) {
 
-//                $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
-//                header("Location: {$url}?page=account");
-//                exit();
 
-//            $user = $mapper->getUser($_POST['login']);
-//
-//            if(!$user) {
-//                return $this->render('login', ['message' => ['Login not recognized']]);
-//            }
-//
-//            if ($user->getPassword() !== $_POST['password']) {
-//                return $this->render('login', ['message' => ['Wrong password']]);
-//            }
-//            else {
-//                $_SESSION["id"] = $user->getLogin();
-//                $_SESSION["role"] = $user->getRole();
-//
-//                $url = "http://$_SERVER[HTTP_HOST]/";
-//                header("Location: {$url}?page=panel");
-//                exit();
-//            }
+            $user = $mapper->getUser($_POST['login']);
 
-            if($_SESSION["role"] =="admin") {
-                $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
-                header("Location: {$url}?page=panel");
-                exit();
+            if(!$user) {
+                return $this->render('login', ['message' => ['Login not recognized']]);
+            }
+
+            if ($user->getPassword() !== $_POST['password']) {
+                return $this->render('login', ['message' => ['Wrong password']]);
             }
             else {
-                $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
-                header("Location: {$url}?page=game");
-                exit();
+                $_SESSION["id"] = $user->getLogin();
+                $_SESSION["role"] = $user->getRole();
+
+                if($_SESSION["role"] =="admin") {
+                    $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
+                    header("Location: {$url}?page=panel");
+                    exit();
+                }
+                else {
+                    $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
+                    header("Location: {$url}?page=account");
+                    exit();
+                }
             }
+
+
         }
 
         return $this->render('login');

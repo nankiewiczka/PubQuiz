@@ -17,7 +17,9 @@ class UserMapper
             $statement_to_retrieve_user =
                 'SELECT * FROM Users 
                   RIGHT JOIN User_details 
-                  ON Users.user_detail = User_details.id_user_detail 
+                  ON Users.user_detail = User_details.id_user_detail
+                  RIGHT JOIN Roles 
+                  ON Users.user_role = Roles.id_role
                   WHERE login = :login';
 
             $stmt = $this->database->connect()->prepare($statement_to_retrieve_user);
@@ -26,7 +28,7 @@ class UserMapper
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             if($user)
-                return new User($user['name'], $user['surname'], $user['email'], $user['login'], $user['password']);
+                return new User($user['name'], $user['surname'], $user['email'], $user['login'], $user['password'], $user['role']);
             else
                 return null;
         }
