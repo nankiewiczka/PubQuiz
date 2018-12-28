@@ -8,6 +8,9 @@
 <body>
 
 <h1>STRONA UŻYTKOWNIKA</h1>
+<div>
+    <button type="button" onclick="window.location.href='?page=logout'" class="btn btn-info">Log out</button>
+</div>
 <p><a href="?page=history">See results</a></p>
 
 <?php
