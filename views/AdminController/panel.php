@@ -62,3 +62,8 @@
 
 </body>
 </html>
+
+<!--//TODO-->
+<!--//walidacja daty albo picker-->
+<!--//dodawanie do bazy-->
+<!--//po kliknięciu update bazy, że quiz jest dostępny-->

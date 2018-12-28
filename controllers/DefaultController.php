@@ -29,23 +29,27 @@ class DefaultController extends AppController
 
         if ($this->isPost()) {
 
-            $user = $mapper->getUser($_POST['login']);
-
-            if(!$user) {
-                return $this->render('login', ['message' => ['Login not recognized']]);
-            }
-
-            if ($user->getPassword() !== $_POST['password']) {
-                return $this->render('login', ['message' => ['Wrong password']]);
-            }
-            else {
-                $_SESSION["id"] = $user->getLogin();
-                $_SESSION["role"] = $user->getRole();
-
-                $url = "http://$_SERVER[HTTP_HOST]/";
-                header("Location: {$url}?page=panel");
+                $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
+                header("Location: {$url}?page=account");
                 exit();
-            }
+
+//            $user = $mapper->getUser($_POST['login']);
+//
+//            if(!$user) {
+//                return $this->render('login', ['message' => ['Login not recognized']]);
+//            }
+//
+//            if ($user->getPassword() !== $_POST['password']) {
+//                return $this->render('login', ['message' => ['Wrong password']]);
+//            }
+//            else {
+//                $_SESSION["id"] = $user->getLogin();
+//                $_SESSION["role"] = $user->getRole();
+//
+//                $url = "http://$_SERVER[HTTP_HOST]/";
+//                header("Location: {$url}?page=panel");
+//                exit();
+//            }
         }
 
         return $this->render('login');

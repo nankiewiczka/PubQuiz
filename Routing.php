@@ -3,6 +3,7 @@
 require_once('controllers/DefaultController.php');
 require_once('controllers/RegisterController.php');
 require_once('controllers/AdminController.php');
+require_once('controllers/UserController.php');
 
 class Routing
 {
@@ -30,8 +31,11 @@ class Routing
             'panel' =>[
                 'controller' => 'AdminController',
                 'action' => 'maintain'
+            ],
+            'account' =>[
+                'controller' => 'UserController',
+                'action' => 'start'
             ]
-
         ];
     }
 
