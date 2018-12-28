@@ -27,6 +27,7 @@ class DefaultController extends AppController
 
         $user = null;
 
+        $_SESSION["role"] = "captain";
         if ($this->isPost()) {
 
                 $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
