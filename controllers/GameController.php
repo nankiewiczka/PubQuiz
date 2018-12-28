@@ -13,9 +13,9 @@ class GameController extends AppController
 
     public function showGame()
     {
-
-        return $this->render('game');
-
+        $text = $_POST['chooseQuizButton'];
+            $this->render('game', ['text' => $text]);
     }
+
 
 }

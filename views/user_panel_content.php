@@ -43,10 +43,13 @@ else {
     foreach ($array as  $value) {
         $name = "quiz".$value;
         echo
-        "<div>
+        "
+<form action=\"?page=game\" method=\"POST\">
+        <div>
             <label>$name</label>
-            <button type=\"button\" class=\"btn btn-info\">PLAY</button>
-            </div>";
+            <button name=\"chooseQuizButton\" value=$name class=\"btn btn-primary btn-lg float-right submitButton\">CHOOSE QUIZ</button>
+            </div>
+            </form>";
     }
 
 }

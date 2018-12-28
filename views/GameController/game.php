@@ -6,7 +6,9 @@
 <body>
 
 <h1>TU BĘDZIE GRA</h1>
-
+<p>
+    <?= $text ?>
+</p>
 
 
 

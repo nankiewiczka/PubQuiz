@@ -20,6 +20,7 @@ class UserController extends AppController
             $_SESSION["team_role"] = "captain";
             $_SESSION["team_name"] = "NAZWA TEAMU";
         }
+
         return $this->render('account');
 
     }

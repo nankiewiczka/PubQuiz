@@ -28,7 +28,7 @@ class DefaultController extends AppController
         $user = null;
         $_SESSION["role"] = "user";
         $_SESSION["team_role"] = "member";
-        $_SESSION["team_name"] = "";
+        $_SESSION["team_name"] = "fcgvb";
         $_SESSION["id"] = "kaka";
 
         if ($this->isPost()) {
