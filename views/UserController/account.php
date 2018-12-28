@@ -10,7 +10,7 @@
 <h1>STRONA UŻYTKOWNIKA</h1>
 
 <?php
-if ($_SESSION["role"] == "captainx") {
+if ($_SESSION["role"] == "captain") {
     //TODO sprawdzenie czy należydo drużyny
     echo "<p>Jesteś kapitanem drużyny. Możesz dodawać i usuwać jej członków</p>";
     echo "<button type=\"button\" class=\"btn btn-info\">ADD MEMBER</button>";
@@ -50,17 +50,17 @@ else {
 }
 
 ?>
-
-<div id="addTeamDiv">
-    <div class="form-group row">
-        <label for="inputName" class="col-sm-1 col-form-label">Team name</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" id="inputTeamName" name="teamName" placeholder=" " required/>
+<form action="?page=account" class="form" onsubmit="return validateCreateTeamForm()" method="post">
+    <div id="addTeamDiv">
+        <div class="form-group row">
+            <label for="inputName" class="col-sm-1 col-form-label">Team name</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="inputTeamName" name="teamName" placeholder=" " required/>
+            </div>
         </div>
+        <input type="submit" value="Create" class="btn btn-primary btn-lg float-left submitButton" />
     </div>
-    <input type="submit" onclick="createTeam()" value="Create" class="btn btn-primary btn-lg float-left submitButton" />
-</div>
-
+</form>
 
 </body>
 </html>

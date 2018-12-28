@@ -17,8 +17,7 @@ class UserController extends AppController
     public function start()
     {
         if($this->isPost()) {
-            return $this->render('login');
-
+            $_SESSION["role"] = "captain";
         }
         return $this->render('account');
 

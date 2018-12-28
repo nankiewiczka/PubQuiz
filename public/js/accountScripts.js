@@ -32,5 +32,8 @@ function createTeam() {
 
         });
     }
-
+    return valid;
+}
+function validateCreateTeamForm() {
+    return createTeam();
 }
