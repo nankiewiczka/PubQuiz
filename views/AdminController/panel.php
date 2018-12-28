@@ -39,24 +39,11 @@
 <div></div>
 <br>
 <br>
-<div>
+<div id="quizListForAdmin">
     <p>Quizes</p>
-        <?php
-        require_once(dirname(__DIR__).'/../model/'.'/QuizMapper.php');
-        require_once(dirname(__DIR__).'/../model/'.'/Quiz.php');
-        $mapper = new QuizMapper();
-        $array = $mapper->getAllQuizes();
-        foreach ($array as  $value) {
-            $name = $value->getName();
-            $date = $value->getDate();
-            echo
-            " <div>
-            <label>$name</label>
-            <label>$date</label>
-            <button type=\"button\" class=\"btn btn-info\">START</button>
-            </div>";
-        }
-        ?>
+    <div>
+        <?php include(dirname(__DIR__).'/load_quizes_for_admin.php'); ?>
+    </div>
 </div>
 
 </body>
