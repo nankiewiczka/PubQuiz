@@ -67,6 +67,8 @@ class TeamMapper
             $stmt->bindParam(':leader', $user->getId(),  PDO::PARAM_STR);
             $stmt->execute();
 
+            $_SESSION["team_name"] = $name;
+            $_SESSION["team_role"] = "captain";
         }
         catch(PDOException $e) {
             return 'Error: ' . $e->getMessage();

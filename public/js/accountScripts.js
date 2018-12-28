@@ -33,4 +33,8 @@ function createTeam() {
         });
     }
 
+    $("#userPanel").load("/views/user_panel_content.php");
+    $("#addTeamDiv").hide();
+
+
 }
