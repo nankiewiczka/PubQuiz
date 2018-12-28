@@ -7,10 +7,11 @@ $array = $mapper->getAllQuizes();
 foreach ($array as  $value) {
     $name = $value->getName();
     $date = $value->getDate();
+    $buttonName = $name.'Button';
     echo
     " <div>
             <label>$name</label>
             <label>$date</label>
-            <button type=\"button\" class=\"btn btn-info\">START</button>
-            </div>";
+            <button id=$buttonName type=\"button\" class=\"btn btn-info\">START</button>
+      </div>";
 }

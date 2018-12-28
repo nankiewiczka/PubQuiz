@@ -54,4 +54,22 @@ class TeamMapper
             return 'Error: ' . $e->getMessage();
         }
     }
+
+    public function addTeam(String $name, User $user)
+    {
+        try
+        {
+            $statement_to_insert_user_details =
+                'INSERT INTO Teams(name, leader) VALUES (:name, :leader)';
+
+            $stmt = $this->database->connect()->prepare($statement_to_insert_user_details);
+            $stmt->bindParam(':name', $name,  PDO::PARAM_STR);
+            $stmt->bindParam(':leader', $user->getId(),  PDO::PARAM_STR);
+            $stmt->execute();
+
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
 }

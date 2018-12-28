@@ -23,7 +23,7 @@ class QuizMapper
             $returnArray = [];
             $i=0;
             foreach ($array as $value) {
-                $returnArray[$i] = new Quiz($value['id_quiz'],$value['name'], $value['date'], $value['enable']);
+                $returnArray[$i] = new Quiz($value['name'], $value['date'], $value['status']);
                 $i++;
             }
             return $returnArray;

@@ -26,9 +26,11 @@ class DefaultController extends AppController
         $mapper = new UserMapper();
 
         $user = null;
-//        $_SESSION["role"] = "user";
-//        $_SESSION["team_role"] = "member";
-//        $_SESSION["team_name"] = "blabla";
+        $_SESSION["role"] = "user";
+        $_SESSION["team_role"] = "member";
+        $_SESSION["team_name"] = "";
+        $_SESSION["id"] = "kaka";
+
         if ($this->isPost()) {
 
 
@@ -57,7 +59,7 @@ class DefaultController extends AppController
 //                }
 //            }
             $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
-            header("Location: {$url}?page=panel");
+            header("Location: {$url}?page=account");
             exit();
 
         }

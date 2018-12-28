@@ -67,7 +67,6 @@ else {
 
 
 ?>
-<form action="?page=account" class="form" onsubmit="return validateCreateTeamForm()" method="post">
     <div id="addTeamDiv">
         <div class="form-group row">
             <label for="inputName" class="col-sm-1 col-form-label">Team name</label>
@@ -75,9 +74,8 @@ else {
                 <input type="text" class="form-control" id="inputTeamName" name="teamName" placeholder=" " required/>
             </div>
         </div>
-        <input type="submit" value="Create" class="btn btn-primary btn-lg float-left submitButton" />
+        <input type="submit" onClick = "createTeam()" value="Create" class="btn btn-primary btn-lg float-left submitButton" />
     </div>
-</form>
 
 </body>
 </html>
