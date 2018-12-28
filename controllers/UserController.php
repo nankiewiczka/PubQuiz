@@ -16,6 +16,10 @@ class UserController extends AppController
 
     public function start()
     {
+        if($this->isPost()) {
+            return $this->render('login');
+
+        }
         return $this->render('account');
 
     }
