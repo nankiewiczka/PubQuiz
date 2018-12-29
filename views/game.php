@@ -14,13 +14,34 @@ echo "
 <br>
   <div class ='row'>
     <div class ='col-md-6 col-sm-6'>
-        <button type=\"button\" class=\" answerButton btn btn-secondary btn-lg btn-block\">$answerA</button>
-        <button type=\"button\" class=\"answerButton btn btn-secondary btn-lg btn-block\">$answerC</button>
+        <label class=\"btn btn-secondary active btn-lg bnt-block\">
+        <input type=\"radio\" name=\"options\" id=\"option1\" autocomplete=\"off\" checked> Active
+        </label>
     </div>
+    
     <div class ='col-md-6 col-sm-6'>
-         <button type=\"button\" class=\" answerButton btn btn-secondary btn-lg btn-block\">$answerB</button>
-        <button type=\"button\" class=\"answerButton btn btn-secondary btn-lg btn-block\">$answerD</button>
-     </div>
+        <label class=\"btn btn-secondary active btn-lg bnt-block\">
+        <input type=\"radio\" name=\"options\" id=\"option1\" autocomplete=\"off\" checked> Active
+        </label>
+    </div>
+    
+     <div class ='col-md-6 col-sm-6'>
+        <label class=\"btn btn-secondary active btn-lg bnt-block\">
+        <input type=\"radio\" name=\"options\" id=\"option1\" autocomplete=\"off\" checked> Active
+        </label>
+    </div>
+    
+    <div class ='col-md-6 col-sm-6'>
+        <label class=\"btn btn-secondary active btn-lg bnt-block\">
+        <input type=\"radio\" name=\"options\" id=\"option1\" autocomplete=\"off\" checked> Active
+        </label>
+    </div>
+    
+    
+    
+    
+    
+
   </div>
   <br>
 </div>
