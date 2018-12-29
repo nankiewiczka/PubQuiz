@@ -32,25 +32,25 @@ else {
   <div class ='row'>
     <div class ='col-md-6 col-sm-6'>
         <label class=\"btn btn-secondary active btn-lg bnt-block\">
-        <input type=\"radio\" name=\"answerA\" autocomplete=\"off\"> $answerA
+        <input type=\"radio\" name=\"answer\" checked value=1 autocomplete=\"off\"> $answerA
         </label>
     </div>
     
     <div class ='col-md-6 col-sm-6'>
         <label class=\"btn btn-secondary active btn-lg bnt-block\">
-        <input type=\"radio\" name=\"answerB\" autocomplete=\"off\"> $answerB
+        <input type=\"radio\" name=\"answer\" value=2 autocomplete=\"off\"> $answerB
         </label>
     </div>
     
      <div class ='col-md-6 col-sm-6'>
         <label class=\"btn btn-secondary active btn-lg bnt-block\">
-        <input type=\"radio\" name=\"answerC\" autocomplete=\"off\"> $answerC
+        <input type=\"radio\" name=\"answer\" value=3 autocomplete=\"off\"> $answerC
         </label>
     </div>
     
     <div class ='col-md-6 col-sm-6'>
         <label class=\"btn btn-secondary active btn-lg bnt-block\">
-        <input type=\"radio\" name=\"answerD\" autocomplete=\"off\"> $answerD
+        <input type=\"radio\" name=\"answer\" value=4 autocomplete=\"off\"> $answerD
         </label>
     </div>
     
