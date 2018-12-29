@@ -9,10 +9,13 @@
 <h1>QUIZ</h1>
 
 <p>
-    <?= $text ?>
+    <?= $quizId ?>
 </p>
+
+
+
 <div>
-    <?php include(dirname(__DIR__) . '/../game/get_questions.php')?>
+    <?php include(dirname(__DIR__) . '/../game/get_questions.php');?>
 </div>
 
 <div id="quizField">
@@ -20,7 +23,12 @@
 </div>
 
 <input id='quizButton' type="submit" value="Sign in" class="btn btn-primary btn-lg float-right submitButton" />
-
+<?php if($_SESSION['loadQuestions'] != 1 ) { ?>
+    <script type='text/javascript'>
+        $("#quizButton").hide();
+    </script>
+<?php
+}?>
 </body>
 </html>
 

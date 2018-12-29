@@ -1,13 +1,15 @@
 <?php
+require_once __DIR__.'/../model/Question.php';
+
 session_start();
-$question = trim($_POST['question']);
-$answer = trim($_POST['answer']);
+$question_id = trim($_POST['question']);
+$answer = ($_POST['answer']);
 
 $questions = $_SESSION['questions'];
-$correct = $questions['question'.$question][5];
-$user_answer = $questions['question'.$question][$answer];
-if( $correct == $user_answer) {
+$question = $questions[$question_id];
+$correct = $question->getCorrectAnswer();
+if( $correct == $answer) {
     $_SESSION['score'] = $_SESSION['score'] +1 ;
 }
-echo "$correct, $user_answer";
+echo "$correct, $answer";
 
