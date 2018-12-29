@@ -1,45 +1,43 @@
 function validateRegisterForm() {
-    let loginElement = document.getElementById("inputLogin");
-    let passwordElement = document.getElementById("inputPassword");
-    let passwordRepeatedElement = document.getElementById("inputRepeatedPassword");
     let valid = true;
-    let errorColor = "#121141";
+    let errorColor = "#178533";
 
-    if(document.getElementById("passwordMessage"))
-        document.getElementById("messages").removeChild(document.getElementById("passwordMessage"));
-    if(document.getElementById("loginMessage"))
-        document.getElementById("messages").removeChild(document.getElementById("loginMessage"));
+    if($("#loginMessage").length)
+        $('#loginMessage').remove();
+    if($("#passwordMessage").length)
+        $('#passwordMessage').remove();
 
-
-    if (passwordElement.value !== passwordRepeatedElement.value) {
-        passwordElement.style.backgroundColor = errorColor;
-        passwordRepeatedElement.style.backgroundColor = errorColor;
+    if ($("#inputPassword").val() !== $("#inputRepeatedPassword").val()) {
+        $("#inputPassword").css('background-color', errorColor);
+        $("#inputRepeatedPassword").css('background-color', errorColor);
         let p2 = "<p id=\"passwordMessage\">Entered passwords are not the same.</p>";
-        if(!document.getElementById("passwordMessage")) {
-            document.getElementById("messages").insertAdjacentHTML('beforeend', p2);
+
+        if(!$("#passwordMessage").length) {
+            $("#messages").append(p2);
         }
-        document.getElementById("inputPassword").value = "";
-        document.getElementById("inputRepeatedPassword").value = "";
+
+        $("#inputPassword").val('');
+        $("#inputRepeatedPassword").val('');
 
         valid = false;
     }
-
+    let login = $('#inputLogin').val();
     $.ajax({
         type: "POST",
         url: "check.php",
         async: false,
-        data: {login : loginElement.value},
+        data: {login : login},
         success: function(data) {
             if(data != '0') {
-                loginElement.style.backgroundColor = errorColor;
+                $("#inputLogin").css('background-color', errorColor);
                 let p1 = "<p id=\"loginMessage\">Login is already taken.</p>";
-                if(!document.getElementById("loginMessage")) document.getElementById("messages").insertAdjacentHTML('beforeend', p1);
-                document.getElementById("inputLogin").value = "";
+                if(!$("#loginMessage").length) {
+                    $("#messages").append(p1);
+                }
+                $("#inputLogin").val('');
                 valid = false;
             }}
     });
-    return valid;
+    return false;
 }
 
-
-// TODO poprawić na jquery

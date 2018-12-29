@@ -21,14 +21,14 @@ class RegisterController extends AppController
         $user = null;
 
         if ($this->isPost()) {
-            $name = $_POST['name'];
-            $surname = $_POST['surname'];
-            $email = $_POST['email'];
-            $login = $_POST['login'];
-            $password = $_POST['password'];
-
-            $user = new User(null, $name, $surname, $email, $login, $password, null);
-            $mapper->addUser($user);
+//            $name = $_POST['name'];
+//            $surname = $_POST['surname'];
+//            $email = $_POST['email'];
+//            $login = $_POST['login'];
+//            $password = $_POST['password'];
+//
+//            $user = new User(null, $name, $surname, $email, $login, $password, null);
+//            $mapper->addUser($user);
 
             $this->render('index', ['text' =>
                 '<p>Account created successfully</p><a href=<?php echo \'?page=login\'; ?>Sign in now</a>.</p>']);
