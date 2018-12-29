@@ -27,7 +27,7 @@ class RegisterController extends AppController
             $login = $_POST['login'];
             $password = $_POST['password'];
 
-            $user = new User($name, $surname, $email, $login, $password);
+            $user = new User(null, $name, $surname, $email, $login, $password, null);
             $mapper->addUser($user);
 
             $this->render('index', ['text' =>
