@@ -12,10 +12,12 @@ class AdminController extends AppController
 
     public function maintain()
     {
-        return $this->render('panel');
-
-
+        if($_SESSION["role"] == "admin")
+            return $this->render('panel');
+        else
+            $url = "http://$_SERVER[HTTP_HOST]/";
+            header("Location: {$url}?page=login");
+            exit();
     }
-
 }
 
