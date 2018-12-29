@@ -21,5 +21,5 @@ $(function() {
 });
 
 function reloadNextQuestion() {
-    $("#quizField").load("/views/questions.php");
+    $("#quizField").load("/game/questions.php");
 }
