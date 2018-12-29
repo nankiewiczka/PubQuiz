@@ -4,7 +4,7 @@ require_once('controllers/DefaultController.php');
 require_once('controllers/RegisterController.php');
 require_once('controllers/AdminController.php');
 require_once('controllers/UserController.php');
-require_once('controllers/GameController.php');
+require_once('controllers/QuizController.php');
 
 class Routing
 {
@@ -41,8 +41,8 @@ class Routing
                 'controller' => 'UserController',
                 'action' => 'showHistory'
             ],
-            'game' =>[
-                'controller' => 'GameController',
+            'quiz' =>[
+                'controller' => 'QuizController',
                 'action' => 'showGame'
             ]
         ];

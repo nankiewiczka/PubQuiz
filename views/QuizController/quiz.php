@@ -11,8 +11,8 @@
 <p>
     <?= $text ?>
 </p>
-<div id="gameField">
-    <?php include(dirname(__DIR__).'/game.php'); ?>
+<div id="quizField">
+    <?php include(dirname(__DIR__) . '/questions.php'); ?>
 
 </div>
 <input id='quizButton' type="submit" value="Sign in" class="btn btn-primary btn-lg float-right submitButton" />

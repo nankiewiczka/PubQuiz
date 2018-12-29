@@ -31,12 +31,12 @@ $(function() {
             data: {question : question, answer : answer},
             success:function(data) {
                 console.log(data);
-                nextQuestion()
+                reloadNextQuestion()
             }
         });
     });
 });
 
-function nextQuestion() {
-    $("#gameField").load("/views/game.php");
+function reloadNextQuestion() {
+    $("#quizField").load("/views/questions.php");
 }

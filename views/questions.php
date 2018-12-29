@@ -1,10 +1,8 @@
 <?php
 session_start();
-$number = $_SESSION["number"];
+$question_index = $_SESSION["question_index"];
 
-
-
-if($number >1) {
+if($question_index >1) {
     echo "<p>KONIEC GRY</p>";
     //TODO przesłanie danych do bazy
     ?>
@@ -16,20 +14,20 @@ if($number >1) {
 else {
     $questions = $_SESSION['questions'];
 
-    $wynik = $_SESSION['score'];
-    $question = $questions['pytanie'.$number][0];
-    $answerA = $questions['pytanie'.$number][1];
-    $answerB = $questions['pytanie'.$number][2];
-    $answerC = $questions['pytanie'.$number][3];
-    $answerD = $questions['pytanie'.$number][4];
-    $_SESSION["number"] = $number+1;
+    $score = $_SESSION['score'];
+    $question = $questions['question'.$question_index][0];
+    $answerA = $questions['question'.$question_index][1];
+    $answerB = $questions['question'.$question_index][2];
+    $answerC = $questions['question'.$question_index][3];
+    $answerD = $questions['question'.$question_index][4];
+    $_SESSION["question_index"] = $question_index+1;
 
     echo "
-<p>$number</p>
-<p>Wynik: $wynik</p>
+<p>$question_index</p>
+<p>Wynik: $score</p>
 <div class ='col-md-8 col-sm-8 offset-sm-2 gameDiv'>
 <div class='question'><p>$question</p></div>
-<input type=\"hidden\" id=\"questionId\" name=\"questionId\" value=$number>
+<input type=\"hidden\" id=\"questionId\" name=\"questionId\" value=$question_index>
 <br>
   <div class ='row'>
     <div class ='col-md-6 col-sm-6'>

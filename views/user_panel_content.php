@@ -44,7 +44,7 @@ else {
         $name = "quiz".$value;
         echo
         "
-<form action=\"?page=game\" method=\"POST\">
+<form action=\"?page=quiz\" method=\"POST\">
         <div>
             <label>$name</label>
             <button name=\"chooseQuizButton\" value=$name class=\"btn btn-primary btn-lg float-right submitButton\">CHOOSE QUIZ</button>
