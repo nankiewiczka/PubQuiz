@@ -9,6 +9,8 @@ class GameController extends AppController
     public function __construct()
     {
         parent::__construct();
+        $_SESSION['number'] = 1;
+
     }
 
     public function showGame()
