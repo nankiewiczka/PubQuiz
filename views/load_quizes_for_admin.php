@@ -6,7 +6,7 @@ $mapper = new QuizMapper();
 $array = $mapper->getAllQuizes();
 foreach ($array as  $value) {
     $name = $value->getName();
-    $date = $value->getDate();
+    $date = $value->getStartDateTime();
     $buttonName = $name.'Button';
     echo
     " <div>

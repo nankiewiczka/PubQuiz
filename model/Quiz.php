@@ -4,15 +4,17 @@ class Quiz {
 
     private $id;
     private $name;
-    private $date;
     private $status;
+    private $startDateTime;
+    private $endDateTime;
 
-    public function __construct($id, $name, $date, $status)
+    public function __construct($id, $name, $status, $startDateTime, $endDateTime)
     {
         $this->$id = $id;
         $this->name = $name;
-        $this->date = $date;
         $this->status = $status;
+        $this->startDateTime = $startDateTime;
+        $this->endDateTime = $endDateTime;
     }
 
     public function getId()
@@ -32,14 +34,14 @@ class Quiz {
     }
 
 
-    public function getDate()
+    public function getStartDateTime()
     {
-        return $this->date;
+        return $this->startDateTime;
     }
 
-    public function setDate($date): void
+    public function setStartDateTime($startDateTime): void
     {
-        $this->date = $date;
+        $this->startDateTime = $startDateTime;
     }
 
     public function getStatus()
@@ -51,4 +53,11 @@ class Quiz {
     {
         $this->status = $status;
     }
+
+    public function getEndDateTime()
+    {
+        return $this->endDateTime;
+    }
+
+
 }

@@ -23,7 +23,7 @@ class QuizMapper
             $returnArray = [];
             $i=0;
             foreach ($array as $value) {
-                $returnArray[$i] = new Quiz($value['id_quiz'], $value['name'], $value['date'], $value['status']);
+                $returnArray[$i] = new Quiz($value['id_quiz'], $value['name'], $value['status'],$value['startDateTime'], $value['endDateTime']);
                 $i++;
             }
             return $returnArray;
@@ -58,12 +58,13 @@ class QuizMapper
     public function addQuiz(Quiz $quiz) {
         try {
             $statement_to_insert_user_details =
-                'INSERT INTO Quizes(name, date, status) VALUES (:name, :date, :status)';
+                'INSERT INTO Quizes(name, status, startDateTime, endDateTime) VALUES (:name, :status, :start, :end)';
 
             $stmt = $this->database->connect()->prepare($statement_to_insert_user_details);
             $stmt->bindParam(':name', $quiz->getName(),  PDO::PARAM_STR);
-            $stmt->bindParam(':date', $quiz->getDate(),  PDO::PARAM_STR);
             $stmt->bindParam(':status', $quiz->getStatus(),  PDO::PARAM_STR);
+            $stmt->bindParam(':start', $quiz->getStartDateTime(), PDO::PARAM_STR);
+            $stmt->bindParam(':end', $quiz->getEndDateTime(),  PDO::PARAM_STR);
             $stmt->execute();
 
         }
@@ -84,7 +85,7 @@ class QuizMapper
 
             $quiz = $stmt->fetch(PDO::FETCH_ASSOC);
             if($quiz)
-                return new Quiz($quiz['id_user'],$quiz['name'], $quiz['surname'], $quiz['email'], $quiz['login'], $quiz['password'], $quiz['role']);
+                return new Quiz($quiz['id_quiz'],$quiz['name'], $quiz['status'], $quiz['startDateTime'], $quiz['endDateTime']);
             else
                 return null;
         }
