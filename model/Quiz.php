@@ -7,8 +7,9 @@ class Quiz {
     private $date;
     private $status;
 
-    public function __construct($name, $date, $status)
+    public function __construct($id, $name, $date, $status)
     {
+        $this->$id = $id;
         $this->name = $name;
         $this->date = $date;
         $this->status = $status;

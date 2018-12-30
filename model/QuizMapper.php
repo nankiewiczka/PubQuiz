@@ -23,7 +23,7 @@ class QuizMapper
             $returnArray = [];
             $i=0;
             foreach ($array as $value) {
-                $returnArray[$i] = new Quiz($value['name'], $value['date'], $value['status']);
+                $returnArray[$i] = new Quiz($value['id_quiz'], $value['name'], $value['date'], $value['status']);
                 $i++;
             }
             return $returnArray;
@@ -66,6 +66,27 @@ class QuizMapper
             $stmt->bindParam(':status', $quiz->getStatus(),  PDO::PARAM_STR);
             $stmt->execute();
 
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function getQuizByName(String $name): Quiz {
+        try {
+            $statement_to_retrieve_quiz =
+                'SELECT * FROM Quizes 
+                  WHERE name = :name';
+
+            $stmt = $this->database->connect()->prepare($statement_to_retrieve_quiz);
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $quiz = $stmt->fetch(PDO::FETCH_ASSOC);
+            if($quiz)
+                return new Quiz($quiz['id_user'],$quiz['name'], $quiz['surname'], $quiz['email'], $quiz['login'], $quiz['password'], $quiz['role']);
+            else
+                return null;
         }
         catch(PDOException $e) {
             return 'Error: ' . $e->getMessage();
