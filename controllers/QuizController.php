@@ -16,6 +16,7 @@ class QuizController extends AppController
     public function showGame()
     {
         $quizId = $_POST['chooseQuizButton'];
+        $_SESSION["quizName"] = $quizId;
         $this->render('quiz', ['quizId'=>$quizId]);
     }
 

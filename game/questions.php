@@ -1,11 +1,25 @@
 <?php
 require_once __DIR__.'/../model/Question.php';
+require_once __DIR__.'/../model/ScoreMapper.php';
+require_once __DIR__.'/../model/QuizMapper.php';
+require_once __DIR__.'/../model/UserMapper.php';
 session_start();
 $question_index = $_SESSION["question_index"];
 
 //TODO ograniczenie na liczbe pytań
 if($question_index >4) {
+    require_once __DIR__.'/../model/UserMapper.php';
+    require_once __DIR__.'/../model/QuizMapper.php';
+
     $score = $_SESSION["score"];
+    $mapper = new ScoreMapper();
+    $userMapper = new UserMapper();
+    $quizMapper = new QuizMapper();
+//    $quizName = $_SESSION["quizName"]; TODO poprawić
+    $quizName = "pierwszy";
+    $p = $mapper->addScore($userMapper->getUser($_SESSION["id"]), $quizMapper->getQuizByName($quizName), $score);
+
+    echo "<p>$p</p>";
     echo "<p>KONIEC GRY</p>";
     echo "<p>$score</p>"
 

@@ -10,7 +10,7 @@ class Quiz {
 
     public function __construct($id, $name, $status, $startDateTime, $endDateTime)
     {
-        $this->$id = $id;
+        $this->id = $id;
         $this->name = $name;
         $this->status = $status;
         $this->startDateTime = $startDateTime;
