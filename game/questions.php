@@ -24,7 +24,6 @@ if($question_index >4) {
     echo "<p>$score</p>"
 
     ;
-    //TODO przesłanie danych do bazy
     ?>
 <script type='text/javascript'>
     $("#quizButton").hide();

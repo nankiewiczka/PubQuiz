@@ -48,12 +48,12 @@ class DefaultController extends AppController
 //                $_SESSION["role"] = $user->getRole();
 //
 //                if($_SESSION["role"] =="admin") {
-//                    $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
+//                    $url = "http://$_SERVER[HTTP_HOST]/";
 //                    header("Location: {$url}?page=panel");
 //                    exit();
 //                }
 //                else {
-//                    $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
+//                    $url = "http://$_SERVER[HTTP_HOST]/";
 //                    header("Location: {$url}?page=account");
 //                    exit();
 //                }

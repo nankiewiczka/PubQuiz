@@ -51,7 +51,7 @@ else {
             </div>
             </form>";
     }
-
 }
 
-
+//TODO
+//dodawanie i usuwanie członków, zablokować gdy jakiś quiz się rozpoczął
