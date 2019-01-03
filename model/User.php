@@ -26,19 +26,9 @@ class User
         return $this->name;
     }
 
-    public function setName($name): void
-    {
-        $this->name = $name;
-    }
-
     public function getSurname()
     {
         return $this->surname;
-    }
-
-    public function setSurname($surname): void
-    {
-        $this->surname = $surname;
     }
 
     public function getEmail()
@@ -46,30 +36,14 @@ class User
         return $this->email;
     }
 
-    public function setEmail($email): void
-    {
-        $this->email = $email;
-    }
-
     public function getLogin()
     {
         return $this->login;
     }
 
-    public function setLogin($login): void
-    {
-        $this->login = $login;
-    }
-
-
     public function getPassword()
     {
         return $this->password;
-    }
-
-    public function setPassword($password): void
-    {
-        $this->password = md5($password);
     }
 
     public function getId()

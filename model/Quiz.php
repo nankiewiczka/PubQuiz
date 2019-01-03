@@ -22,26 +22,14 @@ class Quiz {
         return $this->id;
     }
 
-
     public function getName()
     {
         return $this->name;
     }
 
-    public function setName($name): void
-    {
-        $this->name = $name;
-    }
-
-
     public function getStartDateTime()
     {
         return $this->startDateTime;
-    }
-
-    public function setStartDateTime($startDateTime): void
-    {
-        $this->startDateTime = $startDateTime;
     }
 
     public function getStatus()
@@ -49,15 +37,9 @@ class Quiz {
         return $this->status;
     }
 
-    public function setStatus($status): void
-    {
-        $this->status = $status;
-    }
-
     public function getEndDateTime()
     {
         return $this->endDateTime;
     }
-
 
 }
