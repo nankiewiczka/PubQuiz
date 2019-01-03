@@ -30,6 +30,19 @@ class MembershipMapper
 
     public function deleteMember(User $user, Team $team)
     {
+        try {
+            $statement_to_update_membership =
+                'UPDATE (Membership_details md JOIN Memberships m ON md.id_membership_detail = m.id_membership AND endStartDate IS NULL )
+                SET endStartDate=1 WHERE user=:user AND team=:team';
+
+            $stmt = $this->database->connect()->prepare($statement_to_update_membership);
+            $stmt->bindParam(':user', $user->getId(), PDO::PARAM_STR);
+            $stmt->bindParam(':team', $team->getId(), PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+
+        }
 
     }
 }

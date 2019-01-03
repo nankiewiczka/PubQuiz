@@ -11,7 +11,7 @@ else {
         //TODO sprawdzenie czy należydo drużyny
         echo "<p>$team_name</p>";
         echo "<p>Jesteś kapitanem drużyny. Możesz dodawać i usuwać jej członków</p>";
-        echo "<button type=\"button\" class=\"btn btn-info\">ADD MEMBER</button>";
+        echo "<div><button type=\"button\" id=\"addMemberButton\" class=\"btn btn-info\">ADD MEMBER</button></div>";
 
 //        require_once(dirname(__DIR__).'/../model/'.'/QuizMapper.php');
 //        require_once(dirname(__DIR__).'/../model/'.'/Quiz.php');

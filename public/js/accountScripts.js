@@ -3,7 +3,17 @@ $(document).ready(
         $("#createTeamButton").click(function () {
             $("#addTeamDiv").show("slow");
         });
+
+        $("#addMemberButton").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "teamManagement/add_member.php",
+                async: false,
+                data: {name: name}
+            });
+        });
     });
+
 
 function createTeam() {
     let name = $('#inputTeamName').val();

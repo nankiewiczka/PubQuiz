@@ -4,13 +4,13 @@ class Team
 {
     private $id;
     private $name;
-    private $user;
+    private $captain;
 
     public function __construct($id, $name, $user)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->user = $user;
+        $this->captain = $user;
     }
 
     public function getId()
@@ -23,9 +23,9 @@ class Team
         return $this->name;
     }
 
-    public function getUser()
+    public function getCaptain()
     {
-        return $this->user;
+        return $this->captain;
     }
 
 }

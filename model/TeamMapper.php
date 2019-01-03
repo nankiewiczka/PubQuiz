@@ -74,4 +74,25 @@ class TeamMapper
             return 'Error: ' . $e->getMessage();
         }
     }
+
+    public function getTeamByName (string $name) {
+        try {
+            $statement_to_retrieve_team =
+                'SELECT * FROM Teams 
+                  WHERE name = :name';
+
+            $stmt = $this->database->connect()->prepare($statement_to_retrieve_team);
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $team = $stmt->fetch(PDO::FETCH_ASSOC);
+            if($team)
+                return new Team($team['id_team'], $team['name'], $team['leader']);
+            else
+                return null;
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
 }
