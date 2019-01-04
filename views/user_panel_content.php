@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__.'/../model/MembershipMapper.php';
 session_start();
 $team_name = $_SESSION["team_name"];
 
@@ -12,21 +13,19 @@ else {
         echo "<p>$team_name</p>";
         echo "<p>Jesteś kapitanem drużyny. Możesz dodawać i usuwać jej członków</p>";
         echo "<input class=\"search-filter\" type=\"text\"/>
-   <div id=\"list\" class=\"multiselect\">";
+                <div id=\"list\" class=\"multiselect\">";
 
-        $array = [1,2,3,4,5];
+        $membershipMapper = new MembershipMapper();
+        $array = $membershipMapper->getAllUserWithoutTeam();
         foreach ($array as  $value) {
-            $name = $value;
+            $name = $value->getLogin();
             echo "
-      <input id=\"memberId\" name=\"memberToAdd\" class=\"memberRadio\" type=\"radio\" />
-      <label for=\"memberId\" class=\"memberLabel\">$name</label>
-
-";
+                <input id=\"memberId\" name=\"memberToAdd\" value =$name class=\"memberRadio\" type=\"radio\" />
+                <label for=\"memberId\" class=\"memberLabel\">$name</label>
+                ";
         }
-        echo "
 
-   </div>
-";
+        echo "</div>";
         echo "<div><button type=\"button\" id=\"addMemberButton\" class=\"btn btn-info\">ADD MEMBER</button></div>";
 //TODO get member atribute to delete
 //        require_once(dirname(__DIR__).'/../model/'.'/QuizMapper.php');

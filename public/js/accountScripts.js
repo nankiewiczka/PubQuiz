@@ -5,11 +5,13 @@ $(document).ready(
         });
 
         $("#addMemberButton").click(function () {
-            $.ajax({
-                type: "POST",
-                url: "teamManagement/add_member.php",
-                data: {name: name}
-            }); //TODO after success reload div with members
+            let memberLogin = $('input[name=memberToAdd]:checked').val();
+            console.log(memberLogin)
+            // $.ajax({
+            //     type: "POST",
+            //     url: "teamManagement/add_member.php",
+            //     data: {name: name}
+            // }); //TODO after success reload div with members
         });
 
         listFilter($('#list'), $('.search-filter'));
