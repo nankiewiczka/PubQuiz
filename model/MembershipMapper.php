@@ -47,7 +47,7 @@ class MembershipMapper
 
     }
 
-    public function getAllUserWithoutTeam() {
+    public function getAllUsersWithoutTeam() {
         try {
             $statement_to_retrieve_user_without_any_memberships_history =
                 'SELECT login FROM Users u 
@@ -82,6 +82,37 @@ class MembershipMapper
             $stmt->execute();
             $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            $mapper = new UserMapper();
+            foreach ($array as $value) {
+                $returnArray[$i] = $mapper->getUser($value['login']);
+                $i++;
+            }
+
+            return $returnArray;
+
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function getAllMembersByTeamName(String $name) {
+        try {
+            $statement_to_retrieve_user_without_any_memberships_history =
+                'SELECT login FROM Memberships m 
+                JOIN Membership_details md ON m.membership_detail = md.id_membership_detail
+                JOIN Users u ON u.id_user = m.user
+                JOIN User_details ud ON ud.id_user_detail = u.user_detail
+                JOIN Teams t ON t.id_team = m.team
+                WHERE t.name LIKE :name AND endDateTime IS NULL';
+
+            $stmt = $this->database->connect()->prepare($statement_to_retrieve_user_without_any_memberships_history);
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->execute();
+            $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $returnArray = [];
+            $i=0;
             $mapper = new UserMapper();
             foreach ($array as $value) {
                 $returnArray[$i] = $mapper->getUser($value['login']);

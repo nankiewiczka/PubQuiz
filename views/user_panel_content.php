@@ -17,7 +17,7 @@ else {
                 <div id=\"list\" class=\"multiselect\">";
 
         $membershipMapper = new MembershipMapper();
-        $array = $membershipMapper->getAllUserWithoutTeam();
+        $array = $membershipMapper->getAllUsersWithoutTeam();
         foreach ($array as  $value) {
             $name = $value->getLogin();
             echo "
@@ -29,21 +29,13 @@ else {
         echo "</div>";
         echo "<div><button type=\"button\" id=\"addMemberButton\" class=\"btn btn-info\">ADD MEMBER</button></div>";
 //TODO get member atribute to delete
-//        require_once(dirname(__DIR__).'/../model/'.'/QuizMapper.php');
-//        require_once(dirname(__DIR__).'/../model/'.'/Quiz.php');
-//        $mapper = new QuizMapper();
-//        $array = $mapper->getAllQuizes();
-        $array = [1,2,3,4,5];
+
+        $array = $membershipMapper->getAllMembersByTeamName($teamName);
         foreach ($array as  $value) {
-            $name = "MEMBER" . $value;
-            $date = "data";
-//            $name = $value->getName();
-//            $date = $value->getDate();
-//            $enable = $value->getEnable();
+            $name = $value->getLogin();
             echo
             " <div>
             <label>$name</label>
-            <label>$date</label>
             <button type=\"button\" class=\"btn btn-info\">DELETE MEMBER</button>
             </div>";
         }

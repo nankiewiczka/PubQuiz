@@ -14,8 +14,10 @@ $(document).ready(
             $.ajax({
                 type: "POST",
                 url: "teamManagement/add_member.php",
-                data: {name: userLogin, team : team }
-            }); //TODO after success reload div with members
+                data: {name: userLogin, team : team },
+                // success:
+                    // $("#quizListForAdmin").load("/views/user_panel_content.php")
+        }); //TODO after success reload div with members
         });
 
         listFilter($('#list'), $('.search-filter'));
