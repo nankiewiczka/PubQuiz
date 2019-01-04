@@ -5,13 +5,17 @@ $(document).ready(
         });
 
         $("#addMemberButton").click(function () {
-            let memberLogin = $('input[name=memberToAdd]:checked').val();
-            console.log(memberLogin)
-            // $.ajax({
-            //     type: "POST",
-            //     url: "teamManagement/add_member.php",
-            //     data: {name: name}
-            // }); //TODO after success reload div with members
+            let userLogin = $('input[name=memberToAdd]:checked').val();
+            let team = $('#teamName').val();
+
+            console.log(userLogin)
+            console.log(team)
+
+            $.ajax({
+                type: "POST",
+                url: "teamManagement/add_member.php",
+                data: {name: userLogin, team : team }
+            }); //TODO after success reload div with members
         });
 
         listFilter($('#list'), $('.search-filter'));

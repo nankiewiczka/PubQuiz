@@ -6,4 +6,4 @@ require_once __DIR__.'/../model/TeamMapper.php';
 $mapper = new MembershipMapper();
 $user_mapper = new UserMapper();
 $team_mapper = new TeamMapper();
-$mapper->addMember($user_mapper->getUser("karola"), $team_mapper->getTeamByName("team1"));
+$mapper->addMember($user_mapper->getUser($_POST['name']), $team_mapper->getTeamByName($_POST['team']));

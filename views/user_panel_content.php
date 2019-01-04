@@ -1,17 +1,18 @@
 <?php
 require_once __DIR__.'/../model/MembershipMapper.php';
 session_start();
-$team_name = $_SESSION["team_name"];
+$teamName = $_SESSION["team_name"];
 
-if($team_name == "") {
+if($teamName == "") {
     echo "<div>Nie jesteś przypisany do żadnej drużyny</div>
     <div><button id=\"createTeamButton\" type=\"button\" class=\"btn btn-info\">CREATE TEAM</button></div>";
 }
 else {
     if ($_SESSION["team_role"] == "captain") {
         //TODO sprawdzenie czy należydo drużyny
-        echo "<p>$team_name</p>";
+        echo "<p>$teamName</p>";
         echo "<p>Jesteś kapitanem drużyny. Możesz dodawać i usuwać jej członków</p>";
+        echo "<input type=\"hidden\" id=\"teamName\" value=\"$teamName\">";
         echo "<input class=\"search-filter\" type=\"text\"/>
                 <div id=\"list\" class=\"multiselect\">";
 
@@ -49,7 +50,7 @@ else {
     }
     else {
         echo
-        "<div>Twoja druzyna: $team_name</div>";
+        "<div>Twoja druzyna: $teamName</div>";
     }
 
     echo

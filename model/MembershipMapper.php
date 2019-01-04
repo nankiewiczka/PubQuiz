@@ -76,7 +76,7 @@ class MembershipMapper
                 JOIN Membership_details md ON m.membership_detail = md.id_membership_detail
                 JOIN Users u ON u.id_user = m.user
                 JOIN User_details ud ON u.id_user = ud.id_user_detail
-                WHERE endDateTime IS NULL';
+                WHERE endDateTime IS NOT NULL';
 
             $stmt = $this->database->connect()->prepare($statement_to_retrieve_user_with_membership_history);
             $stmt->execute();
