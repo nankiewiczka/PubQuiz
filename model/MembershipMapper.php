@@ -72,14 +72,14 @@ class MembershipMapper
             }
 
             $statement_to_retrieve_user_with_membership_history =
-                'SELECT login From Memberships m 
+                'SELECT DISTINCT login From Memberships m 
                     JOIN Users u ON u.id_user = m.user
                     JOIN User_details ud ON u.id_user = ud.id_user_detail
                     WHERE login NOT IN (SELECT login FROM Memberships m 
                     JOIN Membership_details md ON m.membership_detail = md.id_membership_detail
                     JOIN Users u ON u.id_user = m.user
                     JOIN User_details ud ON u.id_user = ud.id_user_detail
-                    WHERE endDateTime IS NOT NULL)';
+                    WHERE endDateTime IS NULL)';
 
             $stmt = $this->database->connect()->prepare($statement_to_retrieve_user_with_membership_history);
             $stmt->execute();
