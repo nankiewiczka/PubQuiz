@@ -34,7 +34,7 @@ class MembershipMapper
     {
         try {
             $statement_to_update_membership =
-                'UPDATE (Membership_details md JOIN Memberships m ON md.id_membership_detail = m.id_membership AND endDateTime IS NULL )
+                'UPDATE (Membership_details md JOIN Memberships m ON md.id_membership_detail = m.membership_detail AND endDateTime IS NULL )
                 SET endDateTime=1 WHERE user=:user AND team=:team';
 
             $stmt = $this->database->connect()->prepare($statement_to_update_membership);

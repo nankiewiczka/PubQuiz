@@ -1,7 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: karolina
- * Date: 1/4/19
- * Time: 11:37 PM
- */
+require_once __DIR__.'/../model/MembershipMapper.php';
+require_once __DIR__.'/../model/UserMapper.php';
+require_once __DIR__.'/../model/TeamMapper.php';
+
+$mapper = new MembershipMapper();
+$user_mapper = new UserMapper();
+$team_mapper = new TeamMapper();
+$mapper->deleteMember($user_mapper->getUser("kaka"), $team_mapper->getTeamByName("nowa"));

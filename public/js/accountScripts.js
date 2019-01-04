@@ -10,16 +10,32 @@ $(document).ready(
 
             console.log(userLogin)
             console.log(team)
-
         if(userLogin) {
             $.ajax({
                 type: "POST",
                 url: "teamManagement/add_member.php",
                 data: {name: userLogin, team : team },
-            }); //TODO after success reload div with members
+            });
         }
 
         $("#userPanel").load("/views/user_panel_content.php")
+
+        });
+
+        $("#deleteMemberButton").click(function () {
+            let memberLogin = $(this).attr("value")
+            let team = $('#teamName').val();
+
+            console.log(memberLogin)
+            console.log(team)
+
+            $.ajax({
+                type: "POST",
+                url: "teamManagement/delete_member.php",
+                data: {name: memberLogin, team : team },
+            });
+
+            $("#userPanel").load("/views/user_panel_content.php")
 
         });
 

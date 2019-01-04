@@ -40,7 +40,7 @@ else {
             <label>$login</label>
             <label>$name</label>
             <label>$surname</label>
-            <button type=\"button\" class=\"btn btn-info\">DELETE MEMBER</button>
+            <button type=\"button\" id=\"deleteMemberButton\" value=$login class=\"btn btn-info\">DELETE MEMBER</button>
             </div>";
         }
     }
