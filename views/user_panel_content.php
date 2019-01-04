@@ -32,10 +32,14 @@ else {
 
         $array = $membershipMapper->getAllMembersByTeamName($teamName);
         foreach ($array as  $value) {
-            $name = $value->getLogin();
+            $login = $value->getLogin();
+            $name = $value->getName();
+            $surname = $value->getSurname();
             echo
             " <div>
+            <label>$login</label>
             <label>$name</label>
+            <label>$surname</label>
             <button type=\"button\" class=\"btn btn-info\">DELETE MEMBER</button>
             </div>";
         }

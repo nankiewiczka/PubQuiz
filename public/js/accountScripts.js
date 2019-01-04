@@ -11,13 +11,16 @@ $(document).ready(
             console.log(userLogin)
             console.log(team)
 
+        if(userLogin) {
             $.ajax({
                 type: "POST",
                 url: "teamManagement/add_member.php",
                 data: {name: userLogin, team : team },
-                // success:
-                    // $("#quizListForAdmin").load("/views/user_panel_content.php")
-        }); //TODO after success reload div with members
+            }); //TODO after success reload div with members
+        }
+
+        $("#userPanel").load("/views/user_panel_content.php")
+
         });
 
         listFilter($('#list'), $('.search-filter'));
