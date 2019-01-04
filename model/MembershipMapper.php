@@ -23,6 +23,7 @@ class MembershipMapper
             $stmt->bindParam(':user', $user->getId(), PDO::PARAM_STR);
             $stmt->bindParam(':team', $team->getId(), PDO::PARAM_STR);
             $stmt->execute();
+
         } catch (PDOException $e) {
             return 'Error: ' . $e->getMessage();
 
@@ -33,8 +34,8 @@ class MembershipMapper
     {
         try {
             $statement_to_update_membership =
-                'UPDATE (Membership_details md JOIN Memberships m ON md.id_membership_detail = m.id_membership AND endStartDate IS NULL )
-                SET endStartDate=1 WHERE user=:user AND team=:team';
+                'UPDATE (Membership_details md JOIN Memberships m ON md.id_membership_detail = m.id_membership AND endDateTime IS NULL )
+                SET endDateTime=1 WHERE user=:user AND team=:team';
 
             $stmt = $this->database->connect()->prepare($statement_to_update_membership);
             $stmt->bindParam(':user', $user->getId(), PDO::PARAM_STR);
@@ -71,12 +72,14 @@ class MembershipMapper
             }
 
             $statement_to_retrieve_user_with_membership_history =
-                'SELECT login From 
-                 Memberships m 
-                JOIN Membership_details md ON m.membership_detail = md.id_membership_detail
-                JOIN Users u ON u.id_user = m.user
-                JOIN User_details ud ON u.id_user = ud.id_user_detail
-                WHERE endDateTime IS NOT NULL';
+                'SELECT login From Memberships m 
+                    JOIN Users u ON u.id_user = m.user
+                    JOIN User_details ud ON u.id_user = ud.id_user_detail
+                    WHERE login NOT IN (SELECT login FROM Memberships m 
+                    JOIN Membership_details md ON m.membership_detail = md.id_membership_detail
+                    JOIN Users u ON u.id_user = m.user
+                    JOIN User_details ud ON u.id_user = ud.id_user_detail
+                    WHERE endDateTime IS NOT NULL)';
 
             $stmt = $this->database->connect()->prepare($statement_to_retrieve_user_with_membership_history);
             $stmt->execute();
