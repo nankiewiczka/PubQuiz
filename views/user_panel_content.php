@@ -11,8 +11,24 @@ else {
         //TODO sprawdzenie czy należydo drużyny
         echo "<p>$team_name</p>";
         echo "<p>Jesteś kapitanem drużyny. Możesz dodawać i usuwać jej członków</p>";
-        echo "<div><button type=\"button\" id=\"addMemberButton\" class=\"btn btn-info\">ADD MEMBER</button></div>";
+        echo "<input class=\"search-filter\" type=\"text\"/>
+   <div id=\"list\" class=\"multiselect\">";
 
+        $array = [1,2,3,4,5];
+        foreach ($array as  $value) {
+            $name = $value;
+            echo "
+      <input id=\"memberId\" name=\"memberToAdd\" class=\"memberRadio\" type=\"radio\" />
+      <label for=\"memberId\" class=\"memberLabel\">$name</label>
+
+";
+        }
+        echo "
+
+   </div>
+";
+        echo "<div><button type=\"button\" id=\"addMemberButton\" class=\"btn btn-info\">ADD MEMBER</button></div>";
+//TODO get member atribute to delete
 //        require_once(dirname(__DIR__).'/../model/'.'/QuizMapper.php');
 //        require_once(dirname(__DIR__).'/../model/'.'/Quiz.php');
 //        $mapper = new QuizMapper();

@@ -8,10 +8,11 @@ $(document).ready(
             $.ajax({
                 type: "POST",
                 url: "teamManagement/add_member.php",
-                async: false,
                 data: {name: name}
-            });
+            }); //TODO after success reload div with members
         });
+
+        listFilter($('#list'), $('.search-filter'));
     });
 
 
@@ -48,3 +49,20 @@ function createTeam() {
 
 
 }
+
+
+function listFilter(list, input) {
+    let $lbs = list.find('.memberLabel');
+
+    function filter(){
+        let regex = new RegExp('\\b' + this.value);
+        let $els = $lbs.filter(function(){
+            return regex.test($(this).text());
+        });
+        $lbs.not($els).hide().prev().hide();
+        $els.show().prev().show();
+    }
+
+    input.keyup(filter).change(filter)
+}
+
