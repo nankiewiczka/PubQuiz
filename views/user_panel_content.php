@@ -8,21 +8,21 @@ if($teamName == "") {
     <div><button id=\"createTeamButton\" type=\"button\" class=\"btn btn-info\">CREATE TEAM</button></div>";
 }
 else {
-    if ($_SESSION["team_role"] == "captain") {
+    if ($_SESSION["team_role"] == "leader") {
         //TODO sprawdzenie czy należydo drużyny
         echo "<p>$teamName</p>";
         echo "<p>Jesteś kapitanem drużyny. Możesz dodawać i usuwać jej członków</p>";
         echo "<input type=\"hidden\" id=\"teamName\" value=\"$teamName\">";
-        echo "<input class=\"search-filter\" type=\"text\"/>
+        echo "<input id=\"inputMember\"class=\"search-filter\" type=\"text\"/>
                 <div id=\"list\" class=\"multiselect\">";
 
         $membershipMapper = new MembershipMapper();
         $array = $membershipMapper->getAllUsersWithoutTeam();
         foreach ($array as  $value) {
             $name = $value->getLogin();
-            echo "
+            echo "<div>
                 <input id=\"memberId\" name=\"memberToAdd\" value =$name class=\"memberRadio\" type=\"radio\" />
-                <label for=\"memberId\" class=\"memberLabel\">$name</label>
+                <label for=\"memberId\" class=\"memberLabel\">$name</label></div>
                 ";
         }
 

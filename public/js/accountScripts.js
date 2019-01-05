@@ -1,47 +1,41 @@
-$(document).ready(
-    function(){
-        $("#createTeamButton").click(function () {
-            $("#addTeamDiv").show("slow");
+
+$(document).on('click','#createTeamButton',function(){
+    $("#addTeamDiv").show("slow");
+});
+
+
+$(document).on('input','#inputMember',function(){
+    listFilter($('#list'), $('.search-filter'))
+
+});
+
+$(document).on('click','#addMemberButton',function(){
+    let userLogin = $('input[name=memberToAdd]:checked').val();
+        let team = $('#teamName').val();
+
+    if(userLogin) {
+        $.ajax({
+            type: "POST",
+            url: "teamManagement/add_member.php",
+            data: {name: userLogin, team : team },
         });
+    }
 
-        $("#addMemberButton").click(function () {
-            let userLogin = $('input[name=memberToAdd]:checked').val();
-            let team = $('#teamName').val();
+    $("#userPanel").load("/views/user_panel_content.php")
+});
 
-            console.log(userLogin)
-            console.log(team)
-        if(userLogin) {
-            $.ajax({
-                type: "POST",
-                url: "teamManagement/add_member.php",
-                data: {name: userLogin, team : team },
-            });
-        }
+$(document).on('click','#deleteMemberButton',function(){
+    let memberLogin = $(this).attr("value")
+    let team = $('#teamName').val();
 
-        $("#userPanel").load("/views/user_panel_content.php")
-
-        });
-
-        $("#deleteMemberButton").click(function () {
-            let memberLogin = $(this).attr("value")
-            let team = $('#teamName').val();
-
-            console.log(memberLogin)
-            console.log(team)
-
-            $.ajax({
-                type: "POST",
-                url: "teamManagement/delete_member.php",
-                data: {name: memberLogin, team : team },
-            });
-
-            $("#userPanel").load("/views/user_panel_content.php")
-
-        });
-
-        listFilter($('#list'), $('.search-filter'));
+    $.ajax({
+        type: "POST",
+        url: "teamManagement/delete_member.php",
+        data: {name: memberLogin, team : team },
     });
 
+    $("#userPanel").load("/views/user_panel_content.php")
+});
 
 function createTeam() {
     let name = $('#inputTeamName').val();
@@ -76,7 +70,6 @@ function createTeam() {
 
 
 }
-
 
 function listFilter(list, input) {
     let $lbs = list.find('.memberLabel');

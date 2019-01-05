@@ -27,7 +27,7 @@ class DefaultController extends AppController
 
         $user = null;
         $_SESSION["role"] = "user";
-        $_SESSION["team_role"] = "captain"; //TODO zmienić na leader
+        $_SESSION["team_role"] = "leader";
         $_SESSION["team_name"] = "nowa";
         $_SESSION["id"] = "kaka";
 
