@@ -24,10 +24,11 @@ function validateRegisterForm() {
     let login = $('#inputLogin').val();
     $.ajax({
         type: "POST",
-        url: "check.php",
+        url: "?page=check_login_available",
         async: false,
         data: {login : login},
         success: function(data) {
+            console.log(data);
             if(data != '0') {
                 $("#inputLogin").css('background-color', errorColor);
                 let p1 = "<p id=\"loginMessage\">Login is already taken.</p>";
@@ -38,6 +39,6 @@ function validateRegisterForm() {
                 valid = false;
             }}
     });
-    return false;
+    return valid;
 }
 

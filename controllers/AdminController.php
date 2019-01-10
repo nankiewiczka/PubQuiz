@@ -1,6 +1,8 @@
 <?php
 
 require_once "AppController.php";
+require_once __DIR__.'/../model/QuizMapper.php';
+
 
 class AdminController extends AppController
 {
@@ -19,6 +21,18 @@ class AdminController extends AppController
 //            header("Location: {$url}?page=login");
 //            exit();
         //TODO odkomentować potem
+    }
+
+    public function isQuizAvailable() {
+        $name = trim($_POST['name']);
+        $mapper = new QuizMapper();
+        echo $mapper->isQuizNameAvailable($name);
+        exit();
+    }
+
+    public function addQuiz() {
+        $mapper = new QuizMapper();
+        $mapper->addQuiz(new Quiz(null, $_POST['name'], "created", $_POST['date'], $_POST['date']));
     }
 }
 

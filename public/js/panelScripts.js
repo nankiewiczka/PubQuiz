@@ -13,7 +13,7 @@ function createQuiz() {
     console.log(name);
     $.ajax({
         type: "POST",
-        url: "checkQuizAvailability.php",
+        url: "?page=check_quiz_available",
         async: false,
         data: {name : name},
         success: function(data) {
@@ -28,16 +28,18 @@ function createQuiz() {
     if(valid) {
         $.ajax({
             type: "POST",
-            url: "add_quiz.php",
+            url: "?page=add_quiz",
             data: {
                 name : name,
                 date:date
             }
 
         });
+
+        $("#quizListForAdmin").load("/views/load_quizes_for_admin.php");
+        $("#addQuizDiv").hide();
     }
 
-    $("#quizListForAdmin").load("/views/load_quizes_for_admin.php");
-    $("#addQuizDiv").hide();
+
 
 }

@@ -43,10 +43,11 @@ function createTeam() {
     console.log(name);
     $.ajax({
         type: "POST",
-        url: "checkTeamAvailability.php",
+        url: "?page=check_team_available",
         async: false,
         data: {name : name},
         success: function(data) {
+            console.log(data);
             if (data != '0') {
                 valid = false;
                 $('#inputTeamName').css('background-color', '#178533');
@@ -57,17 +58,16 @@ function createTeam() {
     if(valid) {
         $.ajax({
             type: "POST",
-            url: "add_team.php",
+            url: "?page=add_team",
             data: {
                 name : name,
             }
 
         });
+
+        $("#userPanel").load("/views/user_panel_content.php");
+        $("#addTeamDiv").hide();
     }
-
-    $("#userPanel").load("/views/user_panel_content.php");
-    $("#addTeamDiv").hide();
-
 
 }
 

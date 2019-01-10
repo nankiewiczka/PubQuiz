@@ -7,7 +7,7 @@ $(function() {
         console.log(question);
 
         $.ajax({
-            url: "/game/check_answer.php",
+            url: "?game=check_question",
             type: "POST",
             data: {question : question, answer : answer},
             success:function(data) {

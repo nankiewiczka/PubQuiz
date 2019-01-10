@@ -37,5 +37,12 @@ class RegisterController extends AppController
         return $this->render('register');
     }
 
+    public function isLoginAvailable() {
+        $login = trim($_POST['login']);
+        $mapper = new UserMapper();
+        echo $mapper->isUserLoginAvailable($login);
+        exit();
+    }
+
 }
 

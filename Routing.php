@@ -52,6 +52,30 @@ class Routing
             'delete_member' =>[
                 'controller' => 'UserController',
                 'action' => 'deleteMember'
+            ],
+            'check_login_available' =>[
+                'controller' => 'RegisterController',
+                'action' => 'isLoginAvailable'
+            ],
+            'check_quiz_available' =>[
+                'controller' => 'AdminController',
+                'action' => 'isQuizAvailable'
+            ],
+            'add_quiz' =>[
+                'controller' => 'AdminController',
+                'action' => 'addQuiz'
+            ],
+            'check_team_available' =>[
+                'controller' => 'UserController',
+                'action' => 'isTeamAvailable'
+            ],
+            'add_team' =>[
+                'controller' => 'UserController',
+                'action' => 'addTeam'
+            ],
+            'check_question' =>[
+                'controller' => 'QuizController',
+                'action' => 'checkQuestion'
             ]
         ];
     }

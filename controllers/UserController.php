@@ -46,4 +46,18 @@ class UserController extends AppController
         $mapper->deleteMember($user_mapper->getUser($_POST['name']), $team_mapper->getTeamByName($_POST['team']));
     }
 
+    public function isTeamAvailable() {
+        $name = trim($_POST['name']);
+        $mapper = new TeamMapper();
+        echo $mapper->isTeamNameAvailable($name);
+        exit();
+    }
+
+    public function addTeam() {
+        $mapper = new TeamMapper();
+        $userMapper = new UserMapper();
+        $mapper->addTeam($_POST['name'],$userMapper->getUser($_SESSION["id"]));
+    }
+
+
 }
