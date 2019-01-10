@@ -37,6 +37,37 @@ class UserMapper
         }
     }
 
+    public function getUsers()
+    {
+        try {
+            $statement = 'SELECT * FROM Users u JOIN User_details ud 
+                            ON u.user_detail=ud.id_user_detail 
+                            JOIN Roles r ON r.id_role = u.user_role';
+            $stmt = $this->database->connect()->prepare($statement);
+            $stmt->bindParam(':login', $_SESSION['id'], PDO::PARAM_STR);
+            $stmt->execute();
+
+            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $user;
+        }
+        catch(PDOException $e) {
+            die();
+        }
+    }
+
+    public function delete(int $id): void
+    {
+        try {
+            $stmt = $this->database->connect()->prepare('DELETE FROM Users WHERE id_user = :id;');
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+        catch(PDOException $e) {
+            die();
+        }
+    }
+
+
     public function addUser(User $user) {
         try {
             $statement_to_insert_user_details =

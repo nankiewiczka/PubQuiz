@@ -5,6 +5,7 @@
 <script src="../../public/js/panelScripts.js"></script>
 
 <body>
+<?php include(dirname(__DIR__).'/bar.html'); ?>
 
 <h1>ADMIN PAGE</h1>
 <p>
@@ -48,8 +49,3 @@
 
 </body>
 </html>
-
-<!--//TODO-->
-<!--//walidacja daty albo picker-->
-<!--//dodawanie do bazy-->
-<!--//po kliknięciu update bazy, że quiz jest dostępny-->

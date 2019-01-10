@@ -29,10 +29,7 @@ class Routing
                 'controller' => 'RegisterController',
                 'action' => 'register'
             ],
-            'panel' =>[
-                'controller' => 'AdminController',
-                'action' => 'maintain'
-            ],
+
             'account' =>[
                 'controller' => 'UserController',
                 'action' => 'start'
@@ -76,6 +73,22 @@ class Routing
             'check_question' =>[
                 'controller' => 'QuizController',
                 'action' => 'checkQuestion'
+            ],
+            'admin_panel' =>[
+                'controller' => 'AdminController',
+                'action' => 'maintain'
+            ],
+            'admin_quiz_panel' =>[
+                'controller' => 'AdminController',
+                'action' => 'showQuizes'
+            ],
+            'admin_users' =>[
+                'controller' => 'AdminController',
+                'action' => 'users'
+            ],
+            'admin_delete_user' =>[
+                'controller' => 'AdminController',
+                'action' => 'userDelete'
             ]
         ];
     }
