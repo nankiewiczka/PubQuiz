@@ -16,7 +16,7 @@ $(document).on('click','#addMemberButton',function(){
     if(userLogin) {
         $.ajax({
             type: "POST",
-            url: "teamManagement/add_member.php",
+            url: "?page=add_member",
             data: {name: userLogin, team : team },
         });
     }
@@ -30,7 +30,7 @@ $(document).on('click','#deleteMemberButton',function(){
 
     $.ajax({
         type: "POST",
-        url: "teamManagement/delete_member.php",
+        url: "?page=delete_member",
         data: {name: memberLogin, team : team },
     });
 

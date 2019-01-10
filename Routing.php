@@ -44,6 +44,14 @@ class Routing
             'quiz' =>[
                 'controller' => 'QuizController',
                 'action' => 'showGame'
+            ],
+            'add_member' =>[
+            'controller' => 'UserController',
+            'action' => 'addMember'
+            ],
+            'delete_member' =>[
+                'controller' => 'UserController',
+                'action' => 'deleteMember'
             ]
         ];
     }
