@@ -9,7 +9,7 @@ if($teamName == "") {
 }
 else {
     if ($_SESSION["team_role"] == "leader") {
-        //TODO sprawdzenie czy należydo drużyny
+        //TODO sprawdzenie czy należy do drużyny
         echo "<p>$teamName</p>";
         echo "<p>Jesteś kapitanem drużyny. Możesz dodawać i usuwać jej członków</p>";
         echo "<input type=\"hidden\" id=\"teamName\" value=\"$teamName\">";

@@ -5,7 +5,7 @@
 <script src="../../public/js/panelScripts.js"></script>
 
 <body>
-<?php include(dirname(__DIR__).'/bar.html'); ?>
+<?php include(dirname(__DIR__) . '/adminbar.html'); ?>
 
 <h1>ADMIN PAGE</h1>
 <p>

@@ -6,12 +6,9 @@
 
 
 <body>
+<?php include(dirname(__DIR__) . '/bar.html'); ?>
 
 <h1>STRONA UŻYTKOWNIKA</h1>
-<div>
-    <button type="button" onclick="window.location.href='?page=logout'" class="btn btn-info">Log out</button>
-</div>
-<p><a href="?page=history">See results</a></p>
 <div id="userPanel">
     <?php include(dirname(__DIR__).'/user_panel_content.php'); ?>
 

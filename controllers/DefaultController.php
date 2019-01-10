@@ -59,7 +59,7 @@ class DefaultController extends AppController
 //                }
 //            }
             $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
-            header("Location: {$url}?page=admin_panel");
+            header("Location: {$url}?page=account");
             exit();
 
         }
