@@ -108,10 +108,12 @@ class MembershipMapper
                 JOIN Users u ON u.id_user = m.user
                 JOIN User_details ud ON ud.id_user_detail = u.user_detail
                 JOIN Teams t ON t.id_team = m.team
-                WHERE t.name LIKE :name AND endDateTime IS NULL';
+                WHERE t.name LIKE :name AND endDateTime IS NULL AND login NOT LIKE :login';
 
+            $login = $_SESSION["id"];
             $stmt = $this->database->connect()->prepare($statement_to_retrieve_user_without_any_memberships_history);
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':login', $login, PDO::PARAM_STR);
             $stmt->execute();
             $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -134,22 +136,24 @@ class MembershipMapper
     public function getActualTeamByUserName(String $name) {
         try {
             $statement_to_retrieve_user_team =
-                'SELECT ';
+                'SELECT t.name FROM Memberships m 
+                JOIN Membership_details md ON m.membership_detail = md.id_membership_detail
+                JOIN Users u ON u.id_user = m.user 
+                JOIN User_details ud ON ud.id_user_detail = u.user_detail
+                JOIN Teams t ON t.id_team = m.team
+                AND startDateTime < NOW() AND endDateTime IS NULL AND login LIKE :login';
 
             $stmt = $this->database->connect()->prepare($statement_to_retrieve_user_team);
-            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':login', $name, PDO::PARAM_STR);
             $stmt->execute();
-            $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $team = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $returnArray = [];
-            $i=0;
-            $mapper = new UserMapper();
-            foreach ($array as $value) {
-                $returnArray[$i] = $mapper->getUser($value['login']);
-                $i++;
-            }
+            $number_of_rows = $stmt->rowCount();
 
-            return $returnArray;
+            if($number_of_rows == 1)
+                return $team['name'];
+            else
+                return "";
 
         }
         catch(PDOException $e) {

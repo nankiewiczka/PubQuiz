@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__.'/../model/MembershipMapper.php';
-session_start();
 $teamName = $_SESSION["team_name"];
 
 if($teamName == "") {
