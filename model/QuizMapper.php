@@ -14,10 +14,12 @@ class QuizMapper
 
     public function getAllQuizes() {
         try {
+//            $status = "ended";
             $statement =
-                'SELECT * FROM Quizes ';
+                'SELECT * FROM Quizes';
 
             $stmt = $this->database->connect()->prepare($statement);
+//            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
             $stmt->execute();
             $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $returnArray = [];
@@ -88,6 +90,36 @@ class QuizMapper
                 return new Quiz($quiz['id_quiz'],$quiz['name'], $quiz['status'], $quiz['startDateTime'], $quiz['endDateTime']);
             else
                 return null;
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function startQuiz(int $id) {
+        try {
+            $statement_to_update_quiz =
+                'UPDATE Quizes SET status = :status WHERE id_quiz= :id';
+            $status = "started";
+            $stmt = $this->database->connect()->prepare($statement_to_update_quiz);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+            $stmt->execute();
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function endQuiz(int $id) {
+        try {
+            $statement_to_update_quiz =
+                'UPDATE Quizes SET status = :status WHERE id_quiz= :id';
+            $status = "ended";
+            $stmt = $this->database->connect()->prepare($statement_to_update_quiz);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+            $stmt->execute();
         }
         catch(PDOException $e) {
             return 'Error: ' . $e->getMessage();

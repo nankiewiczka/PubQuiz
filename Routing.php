@@ -89,6 +89,14 @@ class Routing
             'admin_delete_user' =>[
                 'controller' => 'AdminController',
                 'action' => 'userDelete'
+            ],
+            'start_quiz' =>[
+                'controller' => 'AdminController',
+                'action' => 'startQuiz'
+            ],
+            'end_quiz' =>[
+                'controller' => 'AdminController',
+                'action' => 'endQuiz'
             ]
         ];
     }

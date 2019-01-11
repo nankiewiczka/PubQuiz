@@ -1,7 +1,7 @@
 $(document).ready(
     function(){
         $("#addQuizButton").click(function () {
-            $("#addQuizDiv").show("slow");
+            $("#addQuizDiv").css('visibility', 'visible');
         });
     });
 
@@ -91,4 +91,44 @@ function createQuiz() {
 
 
 
+}
+
+function startQuiz(id) {
+    if (!confirm('Do you want to start this quiz?')) {
+        return;
+    }
+
+    const apiUrl = "http://localhost:8080";
+
+    $.ajax({
+        url : apiUrl + '/?page=start_quiz',
+        method : "POST",
+        data : {
+            id : id
+        },
+        success: function() {
+            alert('Selected quiz successfully started');
+            $("#quizListForAdmin").load("/views/load_quizes_for_admin.php");
+        }
+    });
+}
+
+function endQuiz(id) {
+    if (!confirm('Do you want to end this quiz?')) {
+        return;
+    }
+
+    const apiUrl = "http://localhost:8080";
+
+    $.ajax({
+        url : apiUrl + '/?page=end_quiz',
+        method : "POST",
+        data : {
+            id : id
+        },
+        success: function() {
+            alert('Selected quiz successfully started!');
+            $("#quizListForAdmin").load("/views/load_quizes_for_admin.php");
+        }
+    });
 }

@@ -69,5 +69,15 @@ class AdminController extends AppController
         $mapper = new QuizMapper();
         $mapper->addQuiz(new Quiz(null, $_POST['name'], "created", $_POST['date'], $_POST['date']));
     }
+
+    public function startQuiz() {
+        $mapper = new QuizMapper();
+        $mapper->startQuiz($_POST["id"]);
+    }
+
+    public function endQuiz() {
+        $mapper = new QuizMapper();
+        $mapper->endQuiz($_POST["id"]);
+    }
 }
 

@@ -9,7 +9,7 @@ body {
 }
 
 #addQuizDiv {
-    display : none;
+    visibility : hidden
 }
 
 #addTeamDiv {
