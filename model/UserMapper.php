@@ -87,7 +87,7 @@ class UserMapper
             $stmt->bindParam(':login', $user->getLogin(), PDO::PARAM_STR);
             $stmt->execute();
 
-            $user_detail_id = $stmt->fetch();['id_user_detail'];
+            $user_detail_id = $stmt->fetch()['id_user_detail'];
 
             $statement_to_insert_user =
                 'INSERT INTO Users(user_role, user_detail, name, surname) VALUES (2, :user_detail_id, :name, :surname )';
