@@ -60,13 +60,11 @@ class QuizMapper
     public function addQuiz(Quiz $quiz) {
         try {
             $statement_to_insert_user_details =
-                'INSERT INTO Quizes(name, status, startDateTime, endDateTime) VALUES (:name, :status, :start, :end)';
-
+                'INSERT INTO Quizes(name, status) VALUES (:name, :status)';
+            $start = 0;
             $stmt = $this->database->connect()->prepare($statement_to_insert_user_details);
             $stmt->bindParam(':name', $quiz->getName(),  PDO::PARAM_STR);
             $stmt->bindParam(':status', $quiz->getStatus(),  PDO::PARAM_STR);
-            $stmt->bindParam(':start', $quiz->getStartDateTime(), PDO::PARAM_STR);
-            $stmt->bindParam(':end', $quiz->getEndDateTime(),  PDO::PARAM_STR);
             $stmt->execute();
 
         }

@@ -1,9 +1,8 @@
-$(document).ready(
-    function(){
-        $("#addQuizButton").click(function () {
-            $("#addQuizDiv").css('visibility', 'visible');
-        });
-    });
+
+$(document).on('click','#addQuizButton',function(){
+    $("#addQuizDiv").css('visibility', 'visible');
+});
+
 
 function getUsers() {
     const apiUrl = "http://localhost:8080";
@@ -57,9 +56,7 @@ function deleteUser(id) {
 
 function createQuiz() {
     let name = $('#inputQuizName').val();
-    let date = $('#inputQuizDate').val();
     let valid = true;
-    console.log(name);
     $.ajax({
         type: "POST",
         url: "?page=check_quiz_available",
@@ -79,18 +76,15 @@ function createQuiz() {
             type: "POST",
             url: "?page=add_quiz",
             data: {
-                name : name,
-                date:date
+                name : name
             }
 
         });
 
         $("#quizListForAdmin").load("/views/load_quizes_for_admin.php");
-        $("#addQuizDiv").hide();
+        $("#addQuizDiv").css('visibility', 'hidden');
+        $("#inputQuizName").val('');
     }
-
-
-
 }
 
 function startQuiz(id) {
