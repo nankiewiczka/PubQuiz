@@ -14,18 +14,25 @@ class AdminController extends AppController
 
     public function showQuizes()
     {
-//        if($_SESSION["role"] == "admin")
+        if($_SESSION["role"] == "admin")
             return $this->render('quizpanel');
-//        else
-//            $url = "http://$_SERVER[HTTP_HOST]/";
-//            header("Location: {$url}?page=login");
-//            exit();
-        //TODO odkomentować potem
+        else {
+            $url = "http://$_SERVER[HTTP_HOST]/";
+            header("Location: {$url}?page=login");
+            exit();
+        }
     }
 
     public function maintain() {
+        if($_SESSION["role"] == "admin") {
             $user = new UserMapper();
             $this->render('adminpanel', ['user' => $user->getUser($_SESSION['id'])]);
+        }
+        else {
+            $url = "http://$_SERVER[HTTP_HOST]/";
+            header("Location: {$url}?page=login");
+            exit();
+        }
     }
 
     public function users(): void

@@ -22,7 +22,6 @@ function getUsers() {
                 $list.append(`<tr>
                     <td>${el.name}</td>
                     <td>${el.surname}</td>
-                    <td>${el.email}</td>
                     <td>${el.login}</td>
                     <td>${el.role}</td>
                     <td>

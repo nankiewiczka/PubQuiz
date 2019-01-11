@@ -74,11 +74,11 @@ class Routing
                 'controller' => 'QuizController',
                 'action' => 'checkQuestion'
             ],
-            'admin_panel' =>[
+            'adminpanel' =>[
                 'controller' => 'AdminController',
                 'action' => 'maintain'
             ],
-            'admin_quiz_panel' =>[
+            'adminquizpanel' =>[
                 'controller' => 'AdminController',
                 'action' => 'showQuizes'
             ],

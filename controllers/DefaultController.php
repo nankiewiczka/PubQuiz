@@ -26,10 +26,10 @@ class DefaultController extends AppController
         $mapper = new UserMapper();
 
         $user = null;
-        $_SESSION["role"] = "user";
+        $_SESSION["role"] = "admin";
         $_SESSION["team_role"] = "member";
         $_SESSION["team_name"] = "team1";
-        $_SESSION["id"] = "kaka";
+        $_SESSION["id"] = "admin";
 
         if ($this->isPost()) {
 
@@ -50,7 +50,7 @@ class DefaultController extends AppController
 
                 if($_SESSION["role"] =="admin") {
                     $url = "http://$_SERVER[HTTP_HOST]/";
-                    header("Location: {$url}?page=panel");
+                    header("Location: {$url}?page=adminpanel");
                     exit();
                 }
                 else {
