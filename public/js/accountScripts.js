@@ -47,7 +47,6 @@ function createTeam() {
         async: false,
         data: {name : name},
         success: function(data) {
-            console.log(data);
             if (data != '0') {
                 valid = false;
                 $('#inputTeamName').css('background-color', '#178533');
@@ -61,6 +60,12 @@ function createTeam() {
             url: "?page=add_team",
             data: {
                 name : name,
+            },
+            success: function(data) {
+                console.log(data);
+                if (data != '0') {
+                    $('#inputTeamName').css('background-color', '#178533');
+                }
             }
 
         });

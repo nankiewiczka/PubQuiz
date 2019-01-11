@@ -55,11 +55,12 @@ class MembershipMapper
                 JOIN User_details ud ON u.user_detail = ud.id_user_detail 
                 JOIN Roles r ON u.user_role = r.id_role
                 WHERE u.id_user NOT IN (SELECT user FROM Memberships) 
-                AND role NOT LIKE :admin';
+                AND role NOT LIKE :admin AND login NOT LIKE :login';
 
             $admin_role = "admin";
             $stmt = $this->database->connect()->prepare($statement_to_retrieve_user_without_any_memberships_history);
             $stmt->bindParam(':admin', $admin_role, PDO::PARAM_STR);
+            $stmt->bindParam(':login', $_SESSION["id"], PDO::PARAM_STR);
             $stmt->execute();
             $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -110,6 +111,32 @@ class MembershipMapper
                 WHERE t.name LIKE :name AND endDateTime IS NULL';
 
             $stmt = $this->database->connect()->prepare($statement_to_retrieve_user_without_any_memberships_history);
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->execute();
+            $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $returnArray = [];
+            $i=0;
+            $mapper = new UserMapper();
+            foreach ($array as $value) {
+                $returnArray[$i] = $mapper->getUser($value['login']);
+                $i++;
+            }
+
+            return $returnArray;
+
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function getActualTeamByUserName(String $name) {
+        try {
+            $statement_to_retrieve_user_team =
+                'SELECT ';
+
+            $stmt = $this->database->connect()->prepare($statement_to_retrieve_user_team);
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
             $stmt->execute();
             $array = $stmt->fetchAll(PDO::FETCH_ASSOC);

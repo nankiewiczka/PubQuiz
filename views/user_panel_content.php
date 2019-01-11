@@ -28,7 +28,6 @@ else {
 
         echo "</div>";
         echo "<div><button type=\"button\" id=\"addMemberButton\" class=\"btn btn-info\">ADD MEMBER</button></div>";
-//TODO get member atribute to delete
 
         $array = $membershipMapper->getAllMembersByTeamName($teamName);
         foreach ($array as  $value) {
@@ -64,6 +63,3 @@ else {
             </form>";
     }
 }
-
-//TODO
-//dodawanie i usuwanie członków, zablokować gdy jakiś quiz się rozpoczął

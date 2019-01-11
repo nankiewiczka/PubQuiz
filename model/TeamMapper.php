@@ -57,22 +57,37 @@ class TeamMapper
 
     public function addTeam(String $name, User $user)
     {
-        try
-        {
+        $connection = $this->database->connect();
+        $connection->beginTransaction();
+
+        try {
             $statement_to_insert_user_details =
                 'INSERT INTO Teams(name, leader) VALUES (:name, :leader)';
 
-            $stmt = $this->database->connect()->prepare($statement_to_insert_user_details);
+            $stmt = $connection->prepare($statement_to_insert_user_details);
             $stmt->bindParam(':name', $name,  PDO::PARAM_STR);
             $stmt->bindParam(':leader', $user->getId(),  PDO::PARAM_STR);
             $stmt->execute();
+            $team = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $_SESSION["team_name"] = $name;
-            $_SESSION["team_role"] = "captain";
+            $statement_to_insert_membership =
+                'INSERT INTO Memberships(user, team) VALUES (:user, :team)';
+
+            $t = $connection->lastInsertId();
+            $stmt = $connection->prepare($statement_to_insert_membership);
+            $stmt->bindParam(':user', $user->getId(), PDO::PARAM_STR);
+            $stmt->bindParam(':team', $t, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $connection->commit();
+
+        } catch (Exception $e) {
+            $connection->rollBack();
+            echo $t;
         }
-        catch(PDOException $e) {
-            return 'Error: ' . $e->getMessage();
-        }
+        $_SESSION["team_name"] = $name;
+        $_SESSION["team_role"] = "leader";
+        echo '0';
     }
 
     public function getTeamByName (string $name) {

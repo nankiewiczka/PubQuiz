@@ -26,10 +26,6 @@ class DefaultController extends AppController
         $mapper = new UserMapper();
 
         $user = null;
-        $_SESSION["role"] = "admin";
-        $_SESSION["team_role"] = "member";
-        $_SESSION["team_name"] = "team1";
-        $_SESSION["id"] = "admin";
 
         if ($this->isPost()) {
 
@@ -42,7 +38,7 @@ class DefaultController extends AppController
 
             $password = $_POST['password'];
             if(!password_verify($password, $user->getPassword())) {
-                return $this->render('login', ['message' => [$user->getPassword()]]);
+                return $this->render('login', ['message' => ['Wrong password']]);
             }
             else {
                 $_SESSION["id"] = $user->getLogin();

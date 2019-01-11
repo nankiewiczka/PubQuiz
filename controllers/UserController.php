@@ -19,8 +19,8 @@ class UserController extends AppController
     public function start()
     {
         if($this->isPost()) {
-            $_SESSION["team_role"] = "captain";
-            $_SESSION["team_name"] = "NAZWA TEAMU";
+//            $_SESSION["team_role"] = "captain";
+//            $_SESSION["team_name"] = "NAZWA TEAMU";
         }
 
         return $this->render('account');
