@@ -36,14 +36,17 @@ class QuizMapper
         }
     }
 
-    public function getQuizesAvailableForUser() {
+    public function getQuizesAvailableForUser(User $user) {
         try {
-//            $status = "ended";
+            $status = "started";
             $statement =
-                'SELECT * FROM Quizes';
+                'SELECT * FROM Quizes 
+                WHERE id_quiz NOT IN (SELECT quiz_id FROM Scores WHERE user_id=:id)
+                  AND status LIKE :status';
 
             $stmt = $this->database->connect()->prepare($statement);
-//            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $user->getId(), PDO::PARAM_STR);
             $stmt->execute();
             $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $returnArray = [];

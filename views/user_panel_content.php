@@ -47,19 +47,4 @@ else {
         echo
         "<div>Twoja druzyna: $teamRole</div>";
     }
-
-    echo
-    "<div>Dostepne quizy:</div>";
-    $array = [1,2,3,4,5];
-    foreach ($array as  $value) {
-        $name = "quiz".$value;
-        echo
-        "
-<form action=\"?page=quiz\" method=\"POST\">
-        <div>
-            <label>$name</label>
-            <button name=\"chooseQuizButton\" value=$name class=\"btn btn-primary btn-lg float-right submitButton\">CHOOSE QUIZ</button>
-            </div>
-            </form>";
-    }
 }

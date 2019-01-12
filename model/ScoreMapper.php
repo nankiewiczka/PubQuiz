@@ -28,4 +28,36 @@ class ScoreMapper
         }
         return $quiz->getId();
     }
+
+    public function getScoresForUser(User $user) {
+        try {
+            $statement_to_retrieve_user =
+                    'SELECT q.name, points from Scores s 
+                    JOIN Users u ON u.id_user=s.user_id 
+                    JOIN User_details ud ON u.user_detail=ud.id_user_detail
+                    JOIN Quizes q ON q.id_quiz = s.quiz_id
+                    WHERE login LIKE  :login';
+
+            $stmt = $this->database->connect()->prepare($statement_to_retrieve_user);
+            $stmt->bindParam(':login', $user->getLogin(), PDO::PARAM_STR);
+            $stmt->execute();
+
+            $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $returnArray = [];
+            $id = 0;
+            foreach ($array as $value) {
+                $temp = ['name'=>$value['name'], 'points'=>$value['points']];
+                $returnArray[$id] = $temp;
+                $id = $id +1;
+            }
+
+            return $returnArray;
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+
+
+
+    }
 }

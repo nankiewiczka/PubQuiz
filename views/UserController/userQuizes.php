@@ -11,9 +11,11 @@
 <h1>Quizy</h1>
 <?php
 require_once __DIR__.'/../../model/QuizMapper.php';
+require_once __DIR__.'/../../model/UserMapper.php';
 
 $mapper = new QuizMapper();
-$array = $mapper->getQuizesForAdmin();
+$userMapper = new UserMapper();
+$array = $mapper->getQuizesAvailableForUser($userMapper->getUser($_SESSION["id"]));
 echo "<div class=\"container\">
     <div class=\"row\">
 
