@@ -14,16 +14,15 @@ if($question_index >4) {
     $mapper = new ScoreMapper();
     $userMapper = new UserMapper();
     $quizMapper = new QuizMapper();
-//    $quizName = $_SESSION["quizName"]; TODO poprawić
-    $quizName = "pierwszy";
+    $quizName = $_SESSION["quizName"];
     $p = $mapper->addScore($userMapper->getUser($_SESSION["id"]), $quizMapper->getQuizByName($quizName), $score);
 
     echo "<p>$p</p>";
     echo "<p>KONIEC GRY</p>";
-    echo "<p>$score</p>"
-
-    ;
+    echo "<p>$score</p>";
+    echo "<a href='?page=account\'>Powrót do konta</a>";
     ?>
+
 <script type='text/javascript'>
     $("#quizButton").hide();
 </script>
