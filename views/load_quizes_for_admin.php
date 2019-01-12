@@ -3,7 +3,7 @@ require_once __DIR__.'/../model/QuizMapper.php';
 
 
 $mapper = new QuizMapper();
-$array = $mapper->getAllQuizes();
+$array = $mapper->getQuizesForAdmin();
 echo "<div class=\"container\">
     <div class=\"row\">
 

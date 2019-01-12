@@ -12,7 +12,31 @@ class QuizMapper
         $this->database = new Database();
     }
 
-    public function getAllQuizes() {
+    public function getQuizesForAdmin() {
+        try {
+//            $status = "ended";
+            $statement =
+                'SELECT * FROM Quizes';
+
+            $stmt = $this->database->connect()->prepare($statement);
+//            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmt->execute();
+            $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $returnArray = [];
+            $i=0;
+            foreach ($array as $value) {
+                $returnArray[$i] = new Quiz($value['id_quiz'], $value['name'], $value['status'],$value['startDateTime'], $value['endDateTime']);
+                $i++;
+            }
+            return $returnArray;
+
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function getQuizesAvailableForUser() {
         try {
 //            $status = "ended";
             $statement =

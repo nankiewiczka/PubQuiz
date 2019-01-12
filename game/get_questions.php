@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once __DIR__.'/../model/QuestionMapper.php';
 $mapper = new QuestionMapper();
 $array = $mapper->getQuestionsByCategory('HISTORIA');

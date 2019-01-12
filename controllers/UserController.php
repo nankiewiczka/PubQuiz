@@ -18,18 +18,23 @@ class UserController extends AppController
 
     public function start()
     {
-        if($this->isPost()) {
-//            $_SESSION["team_role"] = "captain";
-//            $_SESSION["team_name"] = "NAZWA TEAMU";
+        if($_SESSION["role"] == "user")
+            return $this->render('account');
+        else {
+            $url = "http://$_SERVER[HTTP_HOST]/";
+            header("Location: {$url}?page=login");
+            exit();
         }
-
-        return $this->render('account');
-
     }
 
     public function showHistory()
     {
         return $this->render('history');
+    }
+
+    public function showQuizes()
+    {
+        return $this->render('userQuizes');
     }
 
     public function addMember() {

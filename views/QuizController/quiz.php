@@ -32,9 +32,3 @@
 </body>
 </html>
 
-
-
-<!--TODDO
-przycisk start i jak z sukcesem pobierze dane to dopiro wyswiela na failure jakies inne rzeczy
-
--->

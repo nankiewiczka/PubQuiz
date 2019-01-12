@@ -6,7 +6,6 @@ require_once __DIR__.'/../model/UserMapper.php';
 session_start();
 $question_index = $_SESSION["question_index"];
 
-//TODO ograniczenie na liczbe pytań
 if($question_index >4) {
     require_once __DIR__.'/../model/UserMapper.php';
     require_once __DIR__.'/../model/QuizMapper.php';

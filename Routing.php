@@ -70,10 +70,6 @@ class Routing
                 'controller' => 'UserController',
                 'action' => 'addTeam'
             ],
-            'check_question' =>[
-                'controller' => 'QuizController',
-                'action' => 'checkQuestion'
-            ],
             'adminpanel' =>[
                 'controller' => 'AdminController',
                 'action' => 'maintain'
@@ -97,6 +93,10 @@ class Routing
             'end_quiz' =>[
                 'controller' => 'AdminController',
                 'action' => 'endQuiz'
+            ],
+            'quizes' =>[
+                'controller' => 'UserController',
+                'action' => 'showQuizes'
             ]
         ];
     }
