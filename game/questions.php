@@ -17,10 +17,11 @@ if($question_index >4) {
     $quizName = $_SESSION["quizName"];
     $p = $mapper->addScore($userMapper->getUser($_SESSION["id"]), $quizMapper->getQuizByName($quizName), $score);
 
+
     echo "<p>$p</p>";
     echo "<p>KONIEC GRY</p>";
     echo "<p>$score</p>";
-    echo "<a href='?page=account\'>Powrót do konta</a>";
+    echo "<a href='?page=account'>Powrót do konta</a>";
     ?>
 
 <script type='text/javascript'>

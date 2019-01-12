@@ -16,6 +16,8 @@ if(empty($array)) {
 else {
     $_SESSION["questions"] = $array;
     $_SESSION["loadQuestions"] = 1;
+    $_SESSION['question_index'] = 0;
+    $_SESSION['score'] = 0;
 }
 
 

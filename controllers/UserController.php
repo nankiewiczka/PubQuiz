@@ -37,6 +37,13 @@ class UserController extends AppController
         return $this->render('userQuizes');
     }
 
+    public function showGame()
+    {
+        $quizId = $_POST['chooseQuizButton'];
+        $_SESSION["quizName"] = $quizId;
+        $this->render('quiz', ['quizId'=>$quizId]);
+    }
+
     public function addMember() {
         $mapper = new MembershipMapper();
         $user_mapper = new UserMapper();

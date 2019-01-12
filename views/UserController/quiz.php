@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<?php include(dirname(__DIR__).'/head.html'); ?>
+<?php include(dirname(__DIR__) . '/head.html'); ?>
 <script src="../../public/js/gameScripts.js"></script>
 
 <body>
