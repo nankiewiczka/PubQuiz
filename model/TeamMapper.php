@@ -61,29 +61,28 @@ class TeamMapper
         $connection->beginTransaction();
 
         try {
-            $statement_to_insert_user_details =
+            $statement_to_insert_team =
                 'INSERT INTO Teams(name, leader) VALUES (:name, :leader)';
 
-            $stmt = $connection->prepare($statement_to_insert_user_details);
+            $stmt = $connection->prepare($statement_to_insert_team);
             $stmt->bindParam(':name', $name,  PDO::PARAM_STR);
             $stmt->bindParam(':leader', $user->getId(),  PDO::PARAM_STR);
             $stmt->execute();
-            $team = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $statement_to_insert_membership =
                 'INSERT INTO Memberships(user, team) VALUES (:user, :team)';
 
-            $t = $connection->lastInsertId();
+            $team = $connection->lastInsertId();
             $stmt = $connection->prepare($statement_to_insert_membership);
             $stmt->bindParam(':user', $user->getId(), PDO::PARAM_STR);
-            $stmt->bindParam(':team', $t, PDO::PARAM_STR);
+            $stmt->bindParam(':team', $team, PDO::PARAM_STR);
             $stmt->execute();
 
             $connection->commit();
 
         } catch (Exception $e) {
             $connection->rollBack();
-            echo $t;
+            echo '1';
         }
         $_SESSION["team_name"] = $name;
         $_SESSION["team_role"] = "leader";
@@ -105,6 +104,28 @@ class TeamMapper
                 return new Team($team['id_team'], $team['name'], $team['leader']);
             else
                 return null;
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function getTeamRole(User $user) {
+        try {
+        $statement_to_retrieve_team =
+            'SELECT * FROM Teams 
+                  WHERE leader =:user';
+
+        $stmt = $this->database->connect()->prepare($statement_to_retrieve_team);
+        $stmt->bindParam(':user', $user->getId(), PDO::PARAM_STR);
+        $stmt->execute();
+
+        $number_of_rows = $stmt->rowCount();
+
+        if($number_of_rows != 0)
+            return "leader";
+        else
+            return "member";
         }
         catch(PDOException $e) {
             return 'Error: ' . $e->getMessage();

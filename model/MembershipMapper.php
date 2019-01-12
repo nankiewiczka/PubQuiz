@@ -75,14 +75,15 @@ class MembershipMapper
             $statement_to_retrieve_user_with_membership_history =
                 'SELECT DISTINCT login From Memberships m 
                     JOIN Users u ON u.id_user = m.user
-                    JOIN User_details ud ON u.id_user = ud.id_user_detail
+                    JOIN User_details ud ON u.user_detail = ud.id_user_detail
                     WHERE login NOT IN (SELECT login FROM Memberships m 
                     JOIN Membership_details md ON m.membership_detail = md.id_membership_detail
                     JOIN Users u ON u.id_user = m.user
-                    JOIN User_details ud ON u.id_user = ud.id_user_detail
-                    WHERE endDateTime IS NULL)';
+                    JOIN User_details ud ON u.user_detail = ud.id_user_detail
+                    WHERE endDateTime IS NULL) AND login NOT LIKE :login';
 
             $stmt = $this->database->connect()->prepare($statement_to_retrieve_user_with_membership_history);
+            $stmt->bindParam(':login', $_SESSION["id"], PDO::PARAM_STR);
             $stmt->execute();
             $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

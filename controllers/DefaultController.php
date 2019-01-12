@@ -5,6 +5,7 @@ require_once "AppController.php";
 require_once __DIR__.'/../model/User.php';
 require_once __DIR__.'/../model/UserMapper.php';
 require_once __DIR__.'/../model/MembershipMapper.php';
+require_once __DIR__.'/../model/TeamMapper.php';
 
 
 class DefaultController extends AppController
@@ -28,6 +29,8 @@ class DefaultController extends AppController
         $user = null;
         $membershipMapper = new MembershipMapper();
         $team = null;
+        $teamMapper = new TeamMapper();
+        $teamRole = null;
 
         if ($this->isPost()) {
 
@@ -46,10 +49,11 @@ class DefaultController extends AppController
             }
             else {
                 $team = $membershipMapper->getActualTeamByUserName($user->getLogin());
+                $teamRole = $teamMapper->getTeamRole($user);
                 $_SESSION["id"] = $user->getLogin();
                 $_SESSION["role"] = $user->getRole();
                 $_SESSION["team_name"] = $team;
-                $_SESSION["team_role"] = "leader";
+                $_SESSION["team_role"] = $teamRole;
 
 
                 if($_SESSION["role"] =="admin") {
@@ -63,11 +67,6 @@ class DefaultController extends AppController
                     exit();
                 }
             }
-
-//            $url = "http://$_SERVER[HTTP_HOST]/"; // TODO do testów
-//            header("Location: {$url}?page=account");
-//            exit();
-
         }
 
         return $this->render('login');

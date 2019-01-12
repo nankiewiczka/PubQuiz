@@ -18,10 +18,12 @@ $(document).on('click','#addMemberButton',function(){
             type: "POST",
             url: "?page=add_member",
             data: {name: userLogin, team : team },
+            success: function() {
+                $("#userPanel").load("/views/user_panel_content.php");
+            }
         });
     }
 
-    $("#userPanel").load("/views/user_panel_content.php")
 });
 
 $(document).on('click','#deleteMemberButton',function(){
@@ -32,9 +34,11 @@ $(document).on('click','#deleteMemberButton',function(){
         type: "POST",
         url: "?page=delete_member",
         data: {name: memberLogin, team : team },
+        success: function() {
+            $("#userPanel").load("/views/user_panel_content.php");
+        }
     });
 
-    $("#userPanel").load("/views/user_panel_content.php")
 });
 
 function createTeam() {
