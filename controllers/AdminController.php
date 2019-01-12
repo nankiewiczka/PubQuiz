@@ -35,6 +35,17 @@ class AdminController extends AppController
         }
     }
 
+    public function showResults() {
+        if($_SESSION["role"] == "admin") {
+            $user = new UserMapper();
+            $this->render('results');
+        }
+        else {
+            $url = "http://$_SERVER[HTTP_HOST]/";
+            header("Location: {$url}?page=login");
+            exit();
+        }
+    }
     public function users(): void
     {
         $user = new UserMapper();

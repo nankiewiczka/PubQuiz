@@ -96,6 +96,10 @@ class Routing
             'quizes' =>[
                 'controller' => 'UserController',
                 'action' => 'showQuizes'
+            ],
+            'results' =>[
+                'controller' => 'AdminController',
+                'action' => 'showResults'
             ]
         ];
     }

@@ -39,10 +39,12 @@ else {
         $answerB = $question->getAnswerB();
         $answerC = $question->getAnswerC();
         $answerD = $question->getAnswerD();
+        $category = $question->getCategory();
         $_SESSION["question_index"] = $question_index + 1;
 
         echo "
 <p>Indeks pytania $question_index</p>
+<p>Kategoria: $category</p>
 <p>Wynik: $score</p>
 <div class ='col-md-8 col-sm-8 offset-sm-2 gameDiv'>
 <div class='question'><p>$question_content</p></div>

@@ -33,7 +33,7 @@ class ScoreMapper
         try {
             $statement_to_retrieve_user =
                     'SELECT q.name, points from Scores s 
-                    JOIN Users u ON u.id_user=s.user_id 
+                    JOIN Users u ON u.id_user=s.user_id
                     JOIN User_details ud ON u.user_detail=ud.id_user_detail
                     JOIN Quizes q ON q.id_quiz = s.quiz_id
                     WHERE login LIKE  :login';
@@ -47,6 +47,37 @@ class ScoreMapper
             $id = 0;
             foreach ($array as $value) {
                 $temp = ['name'=>$value['name'], 'points'=>$value['points']];
+                $returnArray[$id] = $temp;
+                $id = $id +1;
+            }
+
+            return $returnArray;
+        }
+        catch(PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    public function getScoresForAdmin() {
+        try {
+            $statement_to_retrieve_user =
+                    'SELECT q.name AS quizName, t.name, sum(points) AS points FROM Scores s 
+                    JOIN Users u ON u.id_user=s.user_id
+                    JOIN User_details ud ON u.user_detail=ud.id_user_detail
+                    JOIN Quizes q ON q.id_quiz = s.quiz_id
+                    JOIN Memberships m ON m.user = s.user_id
+                    JOIN Teams t ON m.team = t.id_team
+                    JOIN Membership_details md ON md.id_membership_detail = m.membership_detail
+                    WHERE q.endDateTime > md.startDateTime AND (q.endDateTime < md.endDateTime OR  md.endDateTime IS NULL)
+                    GROUP BY t.name;';
+
+            $stmt = $this->database->connect()->prepare($statement_to_retrieve_user);
+            $stmt->execute();
+
+            $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $returnArray = [];
+            $id = 0;
+            foreach ($array as $value) {
+                $temp = ['name'=>$value['quizName'], 'team'=>$value['name'], 'points'=>$value['points']];
                 $returnArray[$id] = $temp;
                 $id = $id +1;
             }
