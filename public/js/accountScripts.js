@@ -1,6 +1,7 @@
 
 $(document).on('click','#createTeamButton',function(){
     $("#addTeamDiv").show("slow");
+    $("#createTeamButton").css('visibility', 'hidden');
 });
 
 

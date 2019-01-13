@@ -24,7 +24,7 @@
         <table class=\"table table-hover\">
         <thead>
         <tr>
-            <th>Nazwa</th>
+            <th>Name</th>
             <th>Start date & time</th>
             <th>Play</th>
         </tr>

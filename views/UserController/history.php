@@ -23,7 +23,7 @@
         <table class=\"table table-hover\">
         <thead>
         <tr>
-            <th>Nazwa quizu</th>
+            <th>Quiz name</th>
             <th>Your points</th>
         </tr>
         </thead>
