@@ -1,6 +1,6 @@
 function validateRegisterForm() {
+    console.log("zaczynam");
     let valid = true;
-    let errorColor = "#178533";
 
     if($("#loginMessage").length)
         $('#loginMessage').remove();
@@ -8,8 +8,6 @@ function validateRegisterForm() {
         $('#passwordMessage').remove();
 
     if ($("#inputPassword").val() !== $("#inputRepeatedPassword").val()) {
-        $("#inputPassword").css('background-color', errorColor);
-        $("#inputRepeatedPassword").css('background-color', errorColor);
         let p2 = "<p id=\"passwordMessage\">Entered passwords are not the same.</p>";
 
         if(!$("#passwordMessage").length) {
@@ -30,7 +28,6 @@ function validateRegisterForm() {
         success: function(data) {
             console.log(data);
             if(data != '0') {
-                $("#inputLogin").css('background-color', errorColor);
                 let p1 = "<p id=\"loginMessage\">Login is already taken.</p>";
                 if(!$("#loginMessage").length) {
                     $("#messages").append(p1);

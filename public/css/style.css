@@ -1,12 +1,100 @@
 body {
-    background-color: #3F8462;
-    margin-top: 100px;
+    font-family: 'Lato';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Catamaran';
+    font-weight: 800 !important;
+}
+
+.btn-xl {
+    text-transform: uppercase;
+    padding: 1.5rem 3rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+.bg-black {
+    background-color: #000 !important;
+}
+
+
+.navbar-custom {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.navbar-custom .navbar-brand {
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    font-weight: 700;
+}
+
+.navbar-custom .navbar-nav .nav-item .nav-link {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+header.masthead {
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(7rem + 72px);
+    padding-bottom: 7rem;
+    background: -webkit-gradient(linear, left bottom, left top, from(#1e4856), to(#12696b));
+    background: linear-gradient(0deg, #12696b 0%, #1e4856 100%);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+header.masthead .masthead-content {
+    z-index: 1;
+    position: relative;
+}
+
+header.masthead .masthead-content .masthead-heading {
+    font-size: 4rem;
+}
+
+header.masthead .masthead-content .masthead-subheading {
+    font-size: 2rem;
+}
+
+@media (min-width: 992px) {
+    header.masthead {
+        padding-top: calc(10rem + 55px);
+        padding-bottom: 10rem;
+    }
+    header.masthead .masthead-content .masthead-heading {
+        font-size: 6rem;
+    }
+    header.masthead .masthead-content .masthead-subheading {
+        font-size: 4rem;
+    }
+}
+
+.submitButton:hover {
+    background-color: #071F28;
+    border-color: #1E4856;
 }
 
 .submitButton {
     background-color: #1E4856;
     border-color: #1E4856;
 }
+
+
 
 #addQuizDiv {
     visibility : hidden
@@ -31,35 +119,35 @@ body {
 
 }
 
-ul {
-    list-style-type: none;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
+/*ul {*/
+    /*list-style-type: none;*/
+    /*width: 100%;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*overflow: hidden;*/
+    /*background-color: #333;*/
+/*}*/
 
-li {
-    float: left;
-}
+/*li {*/
+    /*float: left;*/
+/*}*/
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
+/*li a {*/
+    /*display: block;*/
+    /*color: white;*/
+    /*text-align: center;*/
+    /*padding: 14px 16px;*/
+    /*text-decoration: none;*/
+/*}*/
 
-li a:hover:not(.active) {
-    background-color: #111;
-}
+/*li a:hover:not(.active) {*/
+    /*background-color: #111;*/
+/*}*/
 
-li a:hover {
-    text-decoration: none;
-    color: green;
-}
+/*li a:hover {*/
+    /*text-decoration: none;*/
+    /*color: green;*/
+/*}*/
 
 
 .absolute {
@@ -72,5 +160,4 @@ li a:hover {
 .active {
     background-color: #4CAF50;
 }
-
 

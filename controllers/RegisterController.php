@@ -28,7 +28,7 @@ class RegisterController extends AppController
             $password = $_POST['password'];
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $user = new User(null, $name, $surname, $email, $login, $hash, null);
-            $mapper->addUser($user);
+//            $mapper->addUser($user);
 
             $this->render('index', ['text' =>
                 '<p>Account created successfully</p><a href=<?php echo \'?page=login\'; ?>Sign in now</a>.</p>']);
