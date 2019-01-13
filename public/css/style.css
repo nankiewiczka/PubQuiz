@@ -122,19 +122,22 @@ header.masthead .masthead-content .masthead-subheading {
 }
 
 .gameDiv {
-    background-color: #45A3CC;
+    background-color: #071F28;
     margin-top: 10px;
 }
 
 .question {
-    background-color: #60E0D1;
+    background-color: #071F28;
+    font-size:2rem;
 
 }
 
 .answerButton {
-    background-color: #94C9E8;
+    background-color: #071F28;
 
 }
+
+
 
 /*ul {*/
     /*list-style-type: none;*/
@@ -175,6 +178,6 @@ header.masthead .masthead-content .masthead-subheading {
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: #071F28;
 }
 

@@ -18,10 +18,9 @@ if($question_index >4) {
     $p = $mapper->addScore($userMapper->getUser($_SESSION["id"]), $quizMapper->getQuizByName($quizName), $score);
 
 
-    echo "<p>$p</p>";
-    echo "<p>KONIEC GRY</p>";
-    echo "<p>$score</p>";
-    echo "<a href='?page=account'>Powrót do konta</a>";
+    echo "<h1>QUIZ ENDED</h1>";
+    echo "<h1>Your score: $score</h1>";
+    echo "<a href='?page=account'>Back to account </a>";
     ?>
 
 <script type='text/javascript'>
@@ -41,36 +40,36 @@ else {
         $answerD = $question->getAnswerD();
         $category = $question->getCategory();
         $_SESSION["question_index"] = $question_index + 1;
-
+        $num = $question_index+1;
         echo "
-<p>Indeks pytania $question_index</p>
-<p>Kategoria: $category</p>
-<p>Wynik: $score</p>
+<p>Category: $category ----------- Question number: $num</p>
+<p>Your score: $score</p>
+
 <div class ='col-md-8 col-sm-8 offset-sm-2 gameDiv'>
 <div class='question'><p>$question_content</p></div>
-<input type=\"hidden\" id=\"questionId\" name=\"questionId\" value=$question_index>
+<input type=\"hidden\" id=\"questionId\" name=\"questionId\"  value=$question_index>
 <br>
-  <div class ='row'>
-    <div class ='col-md-6 col-sm-6'>
-        <label class=\"btn btn-secondary active btn-lg bnt-block\">
+  <div class ='row '>
+    <div class ='col-md-6 col-sm-6 radio-item'>
+        <label class=\"btn active btn-lg bnt-block \">
         <input type=\"radio\" name=\"answer\" checked value=\"$answerA\" autocomplete=\"off\"> $answerA
         </label>
     </div>
     
     <div class ='col-md-6 col-sm-6'>
-        <label class=\"btn btn-secondary active btn-lg bnt-block\">
+        <label class=\"btn  active btn-lg bnt-block\">
         <input type=\"radio\" name=\"answer\" value=\"$answerB\" autocomplete=\"off\"> $answerB
         </label>
     </div>
     
      <div class ='col-md-6 col-sm-6'>
-        <label class=\"btn btn-secondary active btn-lg bnt-block\">
+        <label class=\"btn  active btn-lg bnt-block\">
         <input type=\"radio\" name=\"answer\" value=\"$answerC\" autocomplete=\"off\"> $answerC
         </label>
     </div>
     
     <div class ='col-md-6 col-sm-6'>
-        <label class=\"btn btn-secondary active btn-lg bnt-block\">
+        <label class=\"btn  active btn-lg bnt-block\">
         <input type=\"radio\" name=\"answer\" value=\"$answerD\" autocomplete=\"off\"> $answerD
         </label>
     </div>
