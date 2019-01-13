@@ -20,13 +20,6 @@
         <div clas="row">
             <div class="col-sm-6 offset-sm-3">
                 <h1>LOGIN</h1>
-                <hr>
-                <?php if(isset($message)): ?>
-                    <?php foreach($message as $item): ?>
-                        <div><?= $item ?></div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-
                 <form action="?page=login" method="POST">
                     <div class="form-group row">
                         <label for="inputLogin" class="col-sm-2 col-form-label">

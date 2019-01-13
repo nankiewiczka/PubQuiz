@@ -82,7 +82,6 @@ function createQuiz() {
         });
 
         $("#quizListForAdmin").load("/views/load_quizes_for_admin.php");
-        $("#addQuizDiv").css('visibility', 'hidden');
         $("#inputQuizName").val('');
     }
 }

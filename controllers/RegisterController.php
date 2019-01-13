@@ -28,10 +28,10 @@ class RegisterController extends AppController
             $password = $_POST['password'];
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $user = new User(null, $name, $surname, $email, $login, $hash, null);
-//            $mapper->addUser($user);
+            $mapper->addUser($user);
 
             $this->render('index', ['text' =>
-                '<p>Account created successfully</p><a href=<?php echo \'?page=login\'; ?>Sign in now</a>.</p>']);
+                '<h1>Account created successfully</h1><br><br><br><h2><a class="nav-link" href=<?php echo \'?page=index\'; ?>Sign in now</a></h2>']);
         }
         else
         return $this->render('register');

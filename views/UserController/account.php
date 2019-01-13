@@ -6,13 +6,14 @@
 
 
 <body>
-<?php include(dirname(__DIR__) . '/bar.html'); ?>
+<?php include(dirname(__DIR__) . '/usernav.html'); ?>
 
-<h1>STRONA UŻYTKOWNIKA</h1>
-<div id="userPanel">
-    <?php include(dirname(__DIR__).'/user_panel_content.php'); ?>
+<header class="masthead text-center text-white">
+    <h1>USER PAGE</h1>
+    <div id="userPanel">
+        <?php include(dirname(__DIR__).'/user_panel_content.php'); ?>
 
-</div>
+    </div>
 
     <div id="addTeamDiv">
         <div class="form-group row">
@@ -23,6 +24,10 @@
         </div>
         <input type="submit" onClick = "createTeam()" value="Create" class="btn btn-primary btn-lg float-left submitButton" />
     </div>
+</header>
+
+<?php include(dirname(__DIR__) . '/foot.html'); ?>
+
 
 </body>
 </html>

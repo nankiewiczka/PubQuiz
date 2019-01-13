@@ -9,9 +9,8 @@ if($teamName == "") {
 }
 else {
     if ($teamRole == "leader") {
-        //TODO sprawdzenie czy należy do drużyny
-        echo "<p>$teamName</p>";
-        echo "<p>Jesteś kapitanem drużyny. Możesz dodawać i usuwać jej członków</p>";
+        echo "<h1>Your team: $teamName</h1>";
+        echo "<h4>Rule your team</h4>";
         echo "<input type=\"hidden\" id=\"teamName\" value=\"$teamName\">";
         echo "<input id=\"inputMember\"class=\"search-filter\" type=\"text\"/>
                 <div id=\"list\" class=\"multiselect\">";

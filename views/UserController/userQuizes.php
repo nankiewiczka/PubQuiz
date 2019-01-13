@@ -6,17 +6,18 @@
 
 
 <body>
-<?php include(dirname(__DIR__) . '/bar.html'); ?>
+<?php include(dirname(__DIR__) . '/usernav.html'); ?>
 
-<h1>Quizy</h1>
-<?php
-require_once __DIR__.'/../../model/QuizMapper.php';
-require_once __DIR__.'/../../model/UserMapper.php';
+<header class="masthead text-center text-white">
+    <h1>AVAILABLE QUIZES</h1>
+    <?php
+    require_once __DIR__.'/../../model/QuizMapper.php';
+    require_once __DIR__.'/../../model/UserMapper.php';
 
-$mapper = new QuizMapper();
-$userMapper = new UserMapper();
-$array = $mapper->getQuizesAvailableForUser($userMapper->getUser($_SESSION["id"]));
-echo "<div class=\"container\">
+    $mapper = new QuizMapper();
+    $userMapper = new UserMapper();
+    $array = $mapper->getQuizesAvailableForUser($userMapper->getUser($_SESSION["id"]));
+    echo "<div class=\"container\">
     <div class=\"row\">
 
         <h4 class=\"mt-4\">Your quizes:</h4>
@@ -31,7 +32,7 @@ echo "<div class=\"container\">
         <tbody>";
 
 
-        foreach ($array as  $value) {
+    foreach ($array as  $value) {
         $name = $value->getName();
         $startDate = $value->getStartDateTime();
         echo "
@@ -45,10 +46,10 @@ echo "<div class=\"container\">
                 </button>
             </form></td>
         ";
-        }
-        ?>
-<?php
-echo "
+    }
+    ?>
+    <?php
+    echo "
             </tbody>
             <tbody class=\"users - list\">
             </tbody>
@@ -56,7 +57,13 @@ echo "
 
     </div>
 </div>";
-?>
+    ?>
+</header>
+
+
+
+
+<?php include(dirname(__DIR__) . '/foot.html'); ?>
 
 </body>
 </html>

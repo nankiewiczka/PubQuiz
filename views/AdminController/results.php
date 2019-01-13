@@ -6,17 +6,18 @@
 
 
 <body>
-<?php include(dirname(__DIR__) . '/adminbar.html'); ?>
+<?php include(dirname(__DIR__) . '/adminnav.html'); ?>
 
-<h1>History</h1>
-<?php
-require_once __DIR__.'/../../model/ScoreMapper.php';
-require_once __DIR__.'/../../model/UserMapper.php';
+<header class="masthead text-center text-white">
+    <h1>History</h1>
+    <?php
+    require_once __DIR__.'/../../model/ScoreMapper.php';
+    require_once __DIR__.'/../../model/UserMapper.php';
 
-$mapper = new ScoreMapper();
-$userMapper = new UserMapper();
-$array = $mapper->getScoresForAdmin();
-echo "<div class=\"container\">
+    $mapper = new ScoreMapper();
+    $userMapper = new UserMapper();
+    $array = $mapper->getScoresForAdmin();
+    echo "<div class=\"container\">
     <div class=\"row\">
 
         <h4 class=\"mt-4\">All quizes:</h4>
@@ -30,23 +31,23 @@ echo "<div class=\"container\">
         </thead>
         <tbody>";
 
-$id = 0 ;
-foreach ($array as  $value) {
-    $name = $value['name'];
-    $team = $value['team'];
-    $points = $value['points'];
-    echo "
+    $id = 0 ;
+    foreach ($array as  $value) {
+        $name = $value['name'];
+        $team = $value['team'];
+        $points = $value['points'];
+        echo "
         <tr>
             <td>$name</td>
             <td>team</td>
             <td>$points</td>
 
         ";
-    $id = $id +1;
-}
-?>
-<?php
-echo "
+        $id = $id +1;
+    }
+    ?>
+    <?php
+    echo "
             </tbody>
             <tbody class=\"users - list\">
             </tbody>
@@ -54,7 +55,11 @@ echo "
 
     </div>
 </div>";
-?>
+    ?>
+
+</header>
+<?php include(dirname(__DIR__) . '/foot.html'); ?>
+
 
 </body>
 </html>
