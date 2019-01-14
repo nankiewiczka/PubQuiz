@@ -22,7 +22,7 @@ class UserController extends AppController
             return $this->render('account');
         else {
             $url = "http://$_SERVER[HTTP_HOST]/";
-            header("Location: {$url}?page=login");
+            header("Location: {$url}?page=index");
             exit();
         }
     }

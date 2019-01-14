@@ -8,7 +8,7 @@
 <?php include(dirname(__DIR__) . '/adminnav.html'); ?>
 
 <header class="masthead text-center text-white">
-    <h1>ADMIN PAGE</h1>
+    <h1>ADMIN PANEL</h1>
 
     <div id="addQuizDiv">
         <div class="col-sm-5 offset-sm-3">

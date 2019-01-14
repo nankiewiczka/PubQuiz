@@ -30,7 +30,7 @@ class AdminController extends AppController
         }
         else {
             $url = "http://$_SERVER[HTTP_HOST]/";
-            header("Location: {$url}?page=login");
+            header("Location: {$url}?page=index");
             exit();
         }
     }

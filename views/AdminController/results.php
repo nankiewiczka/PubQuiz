@@ -9,7 +9,7 @@
 <?php include(dirname(__DIR__) . '/adminnav.html'); ?>
 
 <header class="masthead text-center text-white">
-    <h1>History</h1>
+    <h1>ADMIN PANEL</h1>
     <?php
     require_once __DIR__.'/../../model/ScoreMapper.php';
     require_once __DIR__.'/../../model/UserMapper.php';
@@ -39,7 +39,7 @@
         echo "
         <tr>
             <td>$name</td>
-            <td>team</td>
+            <td>$team</td>
             <td>$points</td>
 
         ";

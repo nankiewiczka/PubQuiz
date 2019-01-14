@@ -7,7 +7,7 @@ $array = $mapper->getQuizesForAdmin();
 echo "<div class=\"container\">
     <div class=\"row\">
 
-        <h4 class=\"mt-4\">Your data:</h4>
+        <h4 class=\"mt-4\">All quizes:</h4>
         <table class=\"table table-hover\">
             <thead>
             <tr>

@@ -8,7 +8,7 @@
 <body>
 <?php include(dirname(__DIR__) . '/usernav.html'); ?>
 <header class="masthead text-center text-white">
-    <h1>QUIZES HISTORY</h1>
+    <h1>RESULTS</h1>
     <?php
     require_once __DIR__.'/../../model/ScoreMapper.php';
     require_once __DIR__.'/../../model/UserMapper.php';
