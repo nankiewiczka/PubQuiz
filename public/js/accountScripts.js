@@ -11,6 +11,10 @@ $(document).on('input','#inputMember',function(){
 });
 
 $(document).on('click','#addMemberButton',function(){
+    if (!confirm('Do you want to add this user?')) {
+        return;
+    }
+
     let userLogin = $('input[name=memberToAdd]:checked').val();
         let team = $('#teamName').val();
 
@@ -28,6 +32,10 @@ $(document).on('click','#addMemberButton',function(){
 });
 
 $(document).on('click','#deleteMemberButton',function(){
+    if (!confirm('Do you want to delete this user?')) {
+        return;
+    }
+
     let memberLogin = $(this).attr("value")
     let team = $('#teamName').val();
 
