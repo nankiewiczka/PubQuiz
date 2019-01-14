@@ -53,7 +53,6 @@ $(document).on('click','#deleteMemberButton',function(){
 function createTeam() {
     let name = $('#inputTeamName').val();
     let valid = true;
-    console.log(name);
     $.ajax({
         type: "POST",
         url: "?page=check_team_available",
@@ -62,7 +61,7 @@ function createTeam() {
         success: function(data) {
             if (data != '0') {
                 valid = false;
-                $('#inputTeamName').css('background-color', '#178533');
+                $('#inputTeamName').css('background-color', '#f7f4ea');
             }
         }
     });
@@ -75,9 +74,8 @@ function createTeam() {
                 name : name,
             },
             success: function(data) {
-                console.log(data);
                 if (data != '0') {
-                    $('#inputTeamName').css('background-color', '#178533');
+                    $('#inputTeamName').css('background-color', '#f7f4ea');
                 }
             }
 

@@ -1,5 +1,4 @@
 function validateRegisterForm() {
-    console.log("zaczynam");
     let valid = true;
 
     if($("#loginMessage").length)
@@ -26,7 +25,6 @@ function validateRegisterForm() {
         async: false,
         data: {login : login},
         success: function(data) {
-            console.log(data);
             if(data != '0') {
                 let p1 = "<p id=\"loginMessage\">Login is already taken.</p>";
                 if(!$("#loginMessage").length) {

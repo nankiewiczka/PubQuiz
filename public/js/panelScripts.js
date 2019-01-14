@@ -13,7 +13,6 @@ function getUsers() {
         dataType : 'json'
     })
         .done((res) => {
-            console.log(res);
             $list.empty();
             //robimy pętlę po zwróconej kolekcji
             //dołączając do tabeli kolejne wiersze
@@ -65,7 +64,7 @@ function createQuiz() {
         success: function(data) {
             if (data != '0') {
                 valid = false;
-                $('#inputQuizName').css('background-color', '#178533');
+                $('#inputQuizName').css('background-color', '#f7f4ea');
             }
         }
     });
