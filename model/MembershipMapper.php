@@ -33,14 +33,26 @@ class MembershipMapper
     public function deleteMember(User $user, Team $team)
     {
         try {
-            $statement_to_update_membership =
-                'UPDATE (Membership_details md JOIN Memberships m ON md.id_membership_detail = m.membership_detail AND endDateTime IS NULL )
-                SET endDateTime=1 WHERE user=:user AND team=:team';
+            $statement_to_get_index =
+                'SELECT md.id_membership_detail FROM Membership_details md 
+                JOIN Memberships m ON m.id_membership = md.id_membership_detail 
+                WHERE user=:user AND team=:team AND endDateTime IS NULL';
 
-            $stmt = $this->database->connect()->prepare($statement_to_update_membership);
+            $stmt = $this->database->connect()->prepare($statement_to_get_index);
             $stmt->bindParam(':user', $user->getId(), PDO::PARAM_STR);
             $stmt->bindParam(':team', $team->getId(), PDO::PARAM_STR);
             $stmt->execute();
+
+            $detail_id = $stmt->fetch()['id_membership_detail'];
+            $date='2000-01-01 00:00:00';
+            $statement_to_update =
+                'UPDATE Membership_details 
+                SET endDateTime=:date WHERE id_membership_detail=:ind';
+            $stmt = $this->database->connect()->prepare($statement_to_update);
+            $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+            $stmt->bindParam(':ind', $detail_id, PDO::PARAM_STR);
+            $stmt->execute();
+
         } catch (PDOException $e) {
             return 'Error: ' . $e->getMessage();
 

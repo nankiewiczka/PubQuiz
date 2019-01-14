@@ -11,13 +11,14 @@ $(document).on('input','#inputMember',function(){
 });
 
 $(document).on('click','#addMemberButton',function(){
-    if (!confirm('Do you want to add this user?')) {
-        return;
-    }
+    // if (!confirm('Do you want to add this user?')) {
+    //     return;
+    // }
 
     let userLogin = $('input[name=memberToAdd]:checked').val();
-        let team = $('#teamName').val();
-
+    let team = $('#teamName').val();
+    console.log(userLogin);
+    console.log(team);
     if(userLogin) {
         $.ajax({
             type: "POST",
@@ -32,9 +33,9 @@ $(document).on('click','#addMemberButton',function(){
 });
 
 $(document).on('click','#deleteMemberButton',function(){
-    if (!confirm('Do you want to delete this user?')) {
-        return;
-    }
+    // if (!confirm('Do you want to delete this user?')) {
+    //     return;
+    // }
 
     let memberLogin = $(this).attr("value")
     let team = $('#teamName').val();
@@ -43,7 +44,8 @@ $(document).on('click','#deleteMemberButton',function(){
         type: "POST",
         url: "?page=delete_member",
         data: {name: memberLogin, team : team },
-        success: function() {
+        success: function(data) {
+            console.log(data);
             $("#userPanel").load("/views/user_panel_content.php");
         }
     });

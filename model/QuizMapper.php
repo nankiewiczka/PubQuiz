@@ -14,12 +14,10 @@ class QuizMapper
 
     public function getQuizesForAdmin() {
         try {
-//            $status = "ended";
             $statement =
                 'SELECT * FROM Quizes';
 
             $stmt = $this->database->connect()->prepare($statement);
-//            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
             $stmt->execute();
             $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $returnArray = [];
@@ -88,7 +86,6 @@ class QuizMapper
         try {
             $statement_to_insert_user_details =
                 'INSERT INTO Quizes(name, status) VALUES (:name, :status)';
-            $start = 0;
             $stmt = $this->database->connect()->prepare($statement_to_insert_user_details);
             $stmt->bindParam(':name', $quiz->getName(),  PDO::PARAM_STR);
             $stmt->bindParam(':status', $quiz->getStatus(),  PDO::PARAM_STR);
