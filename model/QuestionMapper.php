@@ -15,9 +15,7 @@ class QuestionMapper
     public function getQuestionsByCategory (string $category) {
         try {
             $statement_to_retrieve_user =
-                'SELECT * FROM Questions 
-                  RIGHT JOIN Categories
-                  ON Questions.category = Categories.id_category
+                'SELECT * FROM QuestionsWithCategory
                   WHERE category_name = :category_name';
 
             $stmt = $this->database->connect()->prepare($statement_to_retrieve_user);

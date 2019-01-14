@@ -40,9 +40,7 @@ class UserMapper
     public function getUsers()
     {
         try {
-            $statement = 'SELECT * FROM Users u JOIN User_details ud 
-                            ON u.user_detail=ud.id_user_detail 
-                            JOIN Roles r ON r.id_role = u.user_role 
+            $statement = 'SELECT * FROM Userview
                             WHERE login NOT LIKE :login';
             $stmt = $this->database->connect()->prepare($statement);
             $stmt->bindParam(':login', $_SESSION['id'], PDO::PARAM_STR);

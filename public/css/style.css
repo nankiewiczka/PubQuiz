@@ -112,7 +112,6 @@ header.masthead .masthead-content .masthead-subheading {
 }
 
 
-
 #addQuizDiv {
     visibility : visible
 }
@@ -128,7 +127,7 @@ header.masthead .masthead-content .masthead-subheading {
 
 .question {
     background-color: #071F28;
-    font-size:2rem;
+    font-size:1.5rem;
 
 }
 
@@ -136,39 +135,6 @@ header.masthead .masthead-content .masthead-subheading {
     background-color: #071F28;
 
 }
-
-
-
-/*ul {*/
-    /*list-style-type: none;*/
-    /*width: 100%;*/
-    /*margin: 0;*/
-    /*padding: 0;*/
-    /*overflow: hidden;*/
-    /*background-color: #333;*/
-/*}*/
-
-/*li {*/
-    /*float: left;*/
-/*}*/
-
-/*li a {*/
-    /*display: block;*/
-    /*color: white;*/
-    /*text-align: center;*/
-    /*padding: 14px 16px;*/
-    /*text-decoration: none;*/
-/*}*/
-
-/*li a:hover:not(.active) {*/
-    /*background-color: #111;*/
-/*}*/
-
-/*li a:hover {*/
-    /*text-decoration: none;*/
-    /*color: green;*/
-/*}*/
-
 
 .absolute {
     position:absolute;

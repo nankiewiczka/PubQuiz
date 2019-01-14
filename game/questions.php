@@ -5,7 +5,7 @@ require_once __DIR__.'/../model/QuizMapper.php';
 require_once __DIR__.'/../model/UserMapper.php';
 session_start();
 $question_index = $_SESSION["question_index"];
-
+//for testing, quiz has only 5 questions
 if($question_index >4) {
     require_once __DIR__.'/../model/UserMapper.php';
     require_once __DIR__.'/../model/QuizMapper.php';

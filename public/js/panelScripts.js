@@ -24,7 +24,7 @@ function getUsers() {
                     <td>${el.login}</td>
                     <td>${el.role}</td>
                     <td>
-                    <button class="btn btn-danger" type="button" onclick="deleteUser(${el.id_user})">
+                    <button class="btn btn-light" type="button" onclick="deleteUser(${el.id_user})">
                         <i class="material-icons">delete_forever</i>
                     </button>
                     </td>
