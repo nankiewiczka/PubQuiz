@@ -35,7 +35,7 @@ class MembershipMapper
         try {
             $statement_to_get_index =
                 'SELECT md.id_membership_detail FROM Membership_details md 
-                JOIN Memberships m ON m.id_membership = md.id_membership_detail 
+                JOIN Memberships m ON m.membership_detail = md.id_membership_detail 
                 WHERE user=:user AND team=:team AND endDateTime IS NULL';
 
             $stmt = $this->database->connect()->prepare($statement_to_get_index);
