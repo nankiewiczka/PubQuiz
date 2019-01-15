@@ -11,9 +11,9 @@ $(document).on('input','#inputMember',function(){
 });
 
 $(document).on('click','#addMemberButton',function(){
-    // if (!confirm('Do you want to add this user?')) {
-    //     return;
-    // }
+    if (!confirm('Do you want to add this user?')) {
+        return;
+    }
 
     let userLogin = $('input[name=memberToAdd]:checked').val();
     let team = $('#teamName').val();
@@ -33,11 +33,11 @@ $(document).on('click','#addMemberButton',function(){
 });
 
 $(document).on('click','#deleteMemberButton',function(){
-    // if (!confirm('Do you want to delete this user?')) {
-    //     return;
-    // }
+    if (!confirm('Do you want to delete this user?')) {
+        return;
+    }
 
-    let memberLogin = $(this).attr("value")
+    let memberLogin = $(this).attr("value");
     let team = $('#teamName').val();
 
     $.ajax({
@@ -69,6 +69,7 @@ function createTeam() {
     });
 
     if(valid) {
+        console.log(name);
         $.ajax({
             type: "POST",
             url: "?page=add_team",

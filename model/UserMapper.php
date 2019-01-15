@@ -56,13 +56,43 @@ class UserMapper
 
     public function delete(int $id): void
     {
+        $connection = $this->database->connect();
+        $connection->beginTransaction();
+
         try {
-            $stmt = $this->database->connect()->prepare('DELETE FROM Users WHERE id_user = :id;');
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement_to_delete_teamleader =
+                'DELETE FROM Teams WHERE leader=:leader';
+
+            $stmt = $connection->prepare($statement_to_delete_teamleader);
+            $stmt->bindParam(':leader', $id,  PDO::PARAM_STR);
             $stmt->execute();
-        }
-        catch(PDOException $e) {
-            die();
+
+            $statement_to_delete_scores =
+                'DELETE FROM Scores WHERE user_id=:user';
+
+            $stmt = $connection->prepare($statement_to_delete_scores);
+            $stmt->bindParam(':user', $id,  PDO::PARAM_STR);
+            $stmt->execute();
+
+            $statement_to_delete_membership =
+                'DELETE FROM Memberships WHERE user=:user';
+
+            $stmt = $connection->prepare($statement_to_delete_membership);
+            $stmt->bindParam(':user', $id,  PDO::PARAM_STR);
+            $stmt->execute();
+
+            $statement_to_delete_user =
+                'DELETE FROM Users WHERE id_user=:user';
+
+            $stmt = $connection->prepare($statement_to_delete_user);
+            $stmt->bindParam(':user', $id,  PDO::PARAM_STR);
+            $stmt->execute();
+
+            $connection->commit();
+
+        } catch (Exception $e) {
+            $connection->rollBack();
+            echo '1';
         }
     }
 
